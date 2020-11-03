@@ -26,6 +26,7 @@ import xbmcaddon
 import favourite
 import utils
 
+
 ADDON   = utils.ADDON
 ADDONID = utils.ADDONID
 FRODO   = utils.FRODO
@@ -55,7 +56,7 @@ def getParentCommand(cmd):
         if xbmc.getCondVisibility('System.HasAddon(%s)' % plugin) == 1:
             return 'plugin://%s' % plugin
 
-    except Exception, e:
+    except Exception as e:
         pass 
   
     return None
@@ -120,7 +121,7 @@ def playCommand(originalCmd, contentMode=False):
         xbmc.executebuiltin(cmd)
 
 
-    except Exception, e:
+    except Exception as e:
         utils.log('Error in playCommand')
         utils.log('Command: %s' % cmd)
         utils.log('Error:   %s' % str(e))    
@@ -132,26 +133,32 @@ def activateWindowCommand(cmd):
     #special case for filemanager
     if '10003' in cmds[0] or 'filemanager' in cmds[0].lower():
         xbmc.executebuiltin(cmd)
-        return   
+        return
 
     plugin   = None
     activate = None
+    pluginArgs = None
 
     if len(cmds) == 1:
         activate = cmds[0]
     else:
         activate = cmds[0]+',return)'
         plugin   = cmds[1][:-1]
+        try:
+            pluginArgs = plugin.split('/?',1)[1]
+        except:pass
+        # plugin  = cmd.split(',',2)[1]
 
     #check if it is a different window and if so activate it
-    id = str(xbmcgui.getCurrentWindowId())    
+    id = str(xbmcgui.getCurrentWindowId())
 
     if id not in activate:
         xbmc.executebuiltin(activate)
 
-    if plugin:
-        #processParentCommand(plugin)
-        xbmc.executebuiltin('Container.Update(%s)' % plugin)
+    if plugin and not pluginArgs is None:
+        xbmc.executebuiltin('RunPlugin(%s)' % plugin)
+    else: # call plugin without args
+        xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
 
 
 def playMedia(original):
