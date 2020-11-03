@@ -135,9 +135,9 @@ def activateWindowCommand(cmd):
         xbmc.executebuiltin(cmd)
         return
 
-    plugin   = None
-    activate = None
-    pluginArgs = None
+    plugin      = None
+    activate    = None
+    pluginArgs  = None
 
     if len(cmds) == 1:
         activate = cmds[0]
@@ -147,7 +147,6 @@ def activateWindowCommand(cmd):
         try:
             pluginArgs = plugin.split('/?',1)[1]
         except:pass
-        # plugin  = cmd.split(',',2)[1]
 
     #check if it is a different window and if so activate it
     id = str(xbmcgui.getCurrentWindowId())
@@ -156,7 +155,14 @@ def activateWindowCommand(cmd):
         xbmc.executebuiltin(activate)
 
     if plugin and not pluginArgs is None:
-        xbmc.executebuiltin('RunPlugin(%s)' % plugin)
+        try:
+            if "2Fcategories" in cmd:
+                xbmc.executebuiltin(cmd)
+            else:
+                xbmc.executebuiltin('RunPlugin(%s)' % plugin)
+        except Exception as e:
+            utils.log(str(e))
+
     else: # call plugin without args
         xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
 
