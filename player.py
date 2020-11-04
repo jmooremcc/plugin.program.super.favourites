@@ -146,7 +146,7 @@ def activateWindowCommand(cmd):
         plugin   = cmds[1][:-1]
         try:
             pluginArgs = plugin.split('/?',1)[1]
-        except:pass
+        except: pass
 
     #check if it is a different window and if so activate it
     id = str(xbmcgui.getCurrentWindowId())
