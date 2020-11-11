@@ -18,8 +18,11 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
+# import xbmc
+from kodi_six import xbmc
 
+import utils
+import os, sys
 
 def openMenu():
     if xbmc.getCondVisibility('Window.IsActive(ContextMenu)') == 1:
@@ -27,8 +30,7 @@ def openMenu():
 
     xbmc.executebuiltin('Action(ContextMenu)')
 
-    import utils    
-    import os
+
 
     path   = utils.HOME
     script = os.path.join(path, sys.argv[0])

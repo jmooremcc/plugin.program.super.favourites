@@ -18,9 +18,11 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
-import xbmcgui
-import os
+# import xbmc
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui
+
+import os, sys
 
 import utils
 import sfile
@@ -46,6 +48,7 @@ def main(toAdd):
 
 
 def doAdd():
+    #TODO Resolve missing utils.GetAddons() function
     root, folders, files = utils.GetAddons()
 
     list = []

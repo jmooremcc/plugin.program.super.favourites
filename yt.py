@@ -52,10 +52,12 @@
 
 
 import re
-import urllib2
+# import urllib2
 import urllib
+import urllib.request
+from urllib.request import urlopen
 import cgi
-import HTMLParser
+from html.parser import HTMLParser
 
 try: import simplejson as json
 except ImportError: import json
@@ -256,11 +258,11 @@ def ExtractFlashVars(data, assets=False):
 
 
 def FetchPage(url):
-    req = urllib2.Request(url)
+    req = urllib.request.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
     req.add_header('Referer',    'http://www.youtube.com/')
 
-    return urllib2.urlopen(req).read().decode("utf-8")
+    return urlopen(req).read().decode("utf-8")
 
 
 def replaceHTMLCodes(txt):
@@ -398,16 +400,16 @@ def DecryptSignatureNew(s, playerUrl):
     allLocalVarNamesTab = []
     playerData          = ''    
 
-    request = urllib2.Request(playerUrl)
+    request = urllib.request.Request(playerUrl)
     #res        = core._fetchPage({u"link": playerUrl})
     #playerData = res["content"]
             
     try:
-        playerData = urllib2.urlopen(request).read()
+        playerData = urlopen(request).read()
         playerData = playerData.decode('utf-8', 'ignore')
     except Exception as e:
         #print str(e)
-        print 'Failed to decode playerData'
+        print('Failed to decode playerData')
         return ''
         
     # get main function name 
@@ -441,7 +443,7 @@ def DecryptSignatureNew(s, playerUrl):
     try:
         algoCodeObj = compile(fullAlgoCode, '', 'exec')
     except:
-        print 'Failed to obtain decryptSignature code'
+        print('Failed to obtain decryptSignature code')
         return ''
 
     # for security allow only flew python global function in algo code
@@ -454,7 +456,7 @@ def DecryptSignatureNew(s, playerUrl):
     try:
         exec(algoCodeObj, vGlobals, vLocals)
     except:
-        print 'decryptSignature code failed to exceute correctly'
+        print('decryptSignature code failed to exceute correctly')
         return ''
 
     #print 'Decrypted signature = [%s]' % vLocals['outSignature']
@@ -468,7 +470,7 @@ def _getfullAlgoCode(mainFunName, recDepth=0):
     global allLocalVarNamesTab
     
     if MAX_REC_DEPTH <= recDepth:
-        print '_getfullAlgoCode: Maximum recursion depth exceeded'
+        print('_getfullAlgoCode: Maximum recursion depth exceeded')
         return 
 
     funBody = _getLocalFunBody(mainFunName)

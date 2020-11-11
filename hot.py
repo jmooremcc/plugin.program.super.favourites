@@ -18,9 +18,10 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
+# import xbmc
+from kodi_six import xbmc
 import utils
 
-print "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-print 'RunAddon(%s)' % utils.ADDONID
+print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+print('RunAddon(%s)' % utils.ADDONID)
 xbmc.executebuiltin('RunAddon(%s)' % utils.ADDONID)

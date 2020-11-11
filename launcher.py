@@ -18,7 +18,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
+# import xbmc
+from kodi_six import xbmc
 
 xbmc.executebuiltin('RunAddon(plugin.program.super.favourites)')
 xbmc.executebuiltin('Dialog.Close(all, true)')

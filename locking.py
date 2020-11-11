@@ -18,7 +18,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmcgui
+# import xbmcgui
+from kodi_six import xbmcgui
 
 import os
 

@@ -18,8 +18,9 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
-
+import sys
+# import xbmc
+from kodi_six import xbmc
 import favourite
 import utils
 

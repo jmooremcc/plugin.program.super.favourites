@@ -26,7 +26,8 @@
 
 
 import os, sys
-import xbmc, xbmcaddon
+# import xbmc, xbmcaddon
+from kodi_six import xbmc, xbmcaddon
 
 ADDON        = xbmcaddon.Addon('script.globalsearch')
 ADDONID      = ADDON.getAddonInfo('id')
@@ -59,6 +60,7 @@ def doSearch():
 
 	if searchstring:
 		params = {}
+		#TODO Fix import gui reference
 		import gui
 		ui = gui.GUI( "script-globalsearch-main.xml", CWD, "Default", searchstring=searchstring, params=params)
 		ui.doModal()

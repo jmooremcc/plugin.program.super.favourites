@@ -18,6 +18,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
+import sys
+
 if __name__ == '__main__':
     try:
         nParam = len(sys.argv)
@@ -26,4 +28,4 @@ if __name__ == '__main__':
             import cache
             cache.clearProperty(property)
     except Exception as e:
-        print str(e)
+        print(str(e))

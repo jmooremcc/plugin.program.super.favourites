@@ -18,9 +18,11 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
-import xbmcgui
-import xbmcaddon
+# import xbmc
+# import xbmcgui
+# import xbmcaddon
+from kodi_six import xbmc, xbmcgui, xbmcaddon
+
 import os
 
 import utils

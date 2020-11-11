@@ -18,14 +18,16 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmcgui
-
+# import xbmcgui
+from kodi_six import xbmcgui
 import os
 import urllib
 
 import utils
 import favourite
 import parameters
+
+from utils import DISPLAYNAME
 
 
 FILENAME  = utils.FILENAME

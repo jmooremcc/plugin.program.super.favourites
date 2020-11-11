@@ -23,9 +23,10 @@
 
 
 
-import xbmc
-import xbmcgui
-import os
+# import xbmc
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui
+import os, sys
 import urllib
 
 import utils
@@ -170,7 +171,7 @@ class Main:
 
                     label = dir
                 
-                    if colour and colour.lower() <> 'none':
+                    if colour and colour.lower() != 'none':
                         label = '[COLOR %s]%s[/COLOR]' % (colour, label)
               
                     label, index = utils.addPrefixToLabel(index, label, label_numeric)

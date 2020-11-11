@@ -20,7 +20,8 @@
 #  this module provides a wrapper around the Kodi xbmcvfs class
 
 
-import xbmcvfs
+# import xbmcvfs
+from kodi_six import xbmcvfs
 import os
 
 

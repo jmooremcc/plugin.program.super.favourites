@@ -19,9 +19,10 @@
 #
 
 
-import xbmc
-import xbmcaddon
-import xbmcgui
+# import xbmc
+# import xbmcaddon
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui, xbmcaddon
 import os
 import re
 import datetime
@@ -818,7 +819,7 @@ def addPrefixToLabel(index, label, addPrefix=None):
     for c in label:
         locn += 1
         if mode == SEARCHING:
-            if c is '[':           
+            if c == '[':
                 mode    = INELEMENT
                 element = c
             else:
@@ -826,7 +827,7 @@ def addPrefixToLabel(index, label, addPrefix=None):
 
         elif mode == INELEMENT:
             element += c
-            if c is ']':
+            if c == ']':
                 if not isFormatElement(element):
                     locn -= len(element) - 1
                     break

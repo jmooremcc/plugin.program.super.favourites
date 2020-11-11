@@ -18,13 +18,16 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
+import sys
+
+from kodi_six import xbmc, xbmcgui
 
 def run(path, includePlay):
-    import xbmcgui
+    # import xbmcgui
     if xbmcgui.Window(10000).getProperty('Super_Favourites_Chooser') == 'true':
         return
 
-    import xbmc
+    # import xbmc
     import chooser
     
     if not chooser.GetFave('SF_QL', path=path, includePlay=includePlay):

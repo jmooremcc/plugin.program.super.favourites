@@ -19,8 +19,9 @@
 #
 
 
-import xbmcgui
-import xbmcaddon
+# import xbmcgui
+# import xbmcaddon
+from kodi_six import xbmcgui, xbmcaddon
 
 
 class Viewer(xbmcgui.WindowXMLDialog):

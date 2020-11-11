@@ -18,11 +18,12 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
-import xbmcgui
+# import xbmc
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui
 
 import zipfile
-import os
+import os, sys
 
 import utils
 import sfile
@@ -145,6 +146,7 @@ def doExport():
 
 def doZipfile(outputFile, includeSettings=True):
     zip = None
+    output_filename = outputFile
 
     source  = os.path.join(HOME, 'SF_Temp')
 
@@ -185,6 +187,7 @@ def doZipfile(outputFile, includeSettings=True):
             zip.write(filename, arcname)
 
     if includeSettings:
+        #TODO figure out why output_filename is used instead of outputFile
         if zip == None:
             zip = zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED)
 

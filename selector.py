@@ -18,7 +18,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-
+import sys
 import inspect
 FILENAME = inspect.getfile(inspect.currentframe())
 

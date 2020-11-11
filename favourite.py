@@ -18,14 +18,15 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import xbmc
-
+# import xbmc
+from kodi_six import xbmc
 import os
 import re
 import urllib
 
 import utils
 import sfile
+import favourite
 
 HOME_INDICATOR = 'HOME:'
 

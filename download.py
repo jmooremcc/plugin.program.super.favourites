@@ -17,11 +17,13 @@
 '''
 
 import urllib
-import urllib2
-import xbmc
-import xbmcgui
-import xbmcplugin
-import os
+import urllib.request
+from urllib.request import urlopen
+# import xbmc
+# import xbmcgui
+# import xbmcplugin
+from kodi_six import xbmc, xbmcgui, xbmcplugin
+import os, sys
 import inspect
 
 import sfile
@@ -30,8 +32,8 @@ import utils
 
 def getResponse(url, size, referer, agent, cookie):
     try:
-        #url = urllib.quote_plus(url)
-        req = urllib2.Request(url)
+        #url = urllib.parse.quote_plus(url)
+        req = urllib.request.Request(url)
 
         if len(referer) > 0:
             req.add_header('Referer', referer)
@@ -46,7 +48,7 @@ def getResponse(url, size, referer, agent, cookie):
             size = int(size)
             req.add_header('Range', 'bytes=%d-' % size)
 
-        resp = urllib2.urlopen(req, timeout=10)
+        resp = urlopen(req, timeout=10)
         return resp, ''
     except Exception as e:
         return None, str(e)
@@ -77,12 +79,12 @@ def download(url, dest, title=None, referer=None, agent=None, cookie=None, quiet
         cookie  = ''
 
     #quote parameters
-    url     = urllib.quote_plus(url)
-    dest    = urllib.quote_plus(dest)
-    title   = urllib.quote_plus(title)
-    referer = urllib.quote_plus(referer)
-    agent   = urllib.quote_plus(agent)
-    cookie  = urllib.quote_plus(cookie)
+    url     = urllib.parse.quote_plus(url)
+    dest    = urllib.parse.quote_plus(dest)
+    title   = urllib.parse.quote_plus(title)
+    referer = urllib.parse.quote_plus(referer)
+    agent   = urllib.parse.quote_plus(agent)
+    cookie  = urllib.parse.quote_plus(cookie)
 
     script = inspect.getfile(inspect.currentframe())
     cmd    = 'RunScript(%s, %s, %s, %s, %s, %s, %s, %s)' % (script, url, dest, title, referer, agent, cookie, quiet)

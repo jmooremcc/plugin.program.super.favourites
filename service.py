@@ -20,8 +20,9 @@
 
 
 import utils
-import xbmc
-import xbmcgui
+# import xbmc
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui
 import os
 
 

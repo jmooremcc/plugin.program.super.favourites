@@ -20,8 +20,9 @@
 #  KeyListener class based on XBMC Keymap Editor by takoi
 
 
-import xbmc
-import xbmcgui
+# import xbmc
+# import xbmcgui
+from kodi_six import xbmc, xbmcgui
 from threading import Timer
 
 import utils

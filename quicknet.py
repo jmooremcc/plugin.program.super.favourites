@@ -20,9 +20,14 @@
 
 import os
 import time
-import urllib2
+from urllib.request import urlopen
+import urllib.request
+import urllib
+# import urllib2
 
-import xbmc
+# import xbmc
+from kodi_six import xbmc
+
 import utils
 import sfile
 
@@ -42,11 +47,11 @@ def checkCacheDir():
 
 
 def getURLNoCache(url, agent=None, tidy=True):
-    req = urllib2.Request(url)
+    req = urllib.request.Request(url)
     if agent:
         req.add_header('User-Agent', agent)
 
-    response = urllib2.urlopen(req)
+    response = urlopen(req)
     html     = response.read()
     response.close()
 
@@ -118,6 +123,7 @@ def purgeCache():
     nFiles = len(files)
 
     try:
+        #TODO Resolve gCacheSize variable
         while nFiles > gCacheSize:            
             oldestFile = getOldestFile(files)
  

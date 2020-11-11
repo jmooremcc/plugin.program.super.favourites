@@ -21,7 +21,8 @@
 import utils
 import favourite
 import os
-import xbmc
+# import xbmc
+from kodi_six import xbmc
 
 ROOT     = utils.ROOT
 FILENAME = utils.FILENAME

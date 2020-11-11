@@ -20,10 +20,13 @@
 
 
 
-import xbmc
-import xbmcgui
-import xbmcaddon
-import os
+# import xbmc
+# import xbmcgui
+# import xbmcaddon
+from kodi_six import xbmc, xbmcgui, xbmcaddon
+import os, sys
+
+from utils import HOME
 
 
 _STD_MENU     = 0
@@ -89,7 +92,7 @@ def doStandard(useScript=True):
     window = xbmcgui.getCurrentWindowId()
 
     if window == 10000: #home
-        if xbmc.getCondVisibility('Window.IsActive(favourites)') <> 1:
+        if xbmc.getCondVisibility('Window.IsActive(favourites)') != 1:
             return
 
     if window == 12005: #video playing
@@ -125,7 +128,7 @@ def getPlugins():
     if not MENU_PLUGINS:
         return []
 
-    import os
+    import os, sys
 
     path = xbmc.translatePath(os.path.join(ROOT, 'Plugins'))
     sys.path.insert(0, path)

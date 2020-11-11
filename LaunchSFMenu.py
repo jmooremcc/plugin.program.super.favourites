@@ -21,7 +21,8 @@
 
 def main():
     try:
-        import xbmc
+        # import xbmc
+        from kodi_six import xbmc
 
         if xbmc.getCondVisibility('System.HasAddon(%s)' % 'plugin.program.super.favourites') == 1:        
             cmd = 'runscript(special://home/addons/plugin.program.super.favourites/capture.py,LaunchSFMenu)'
