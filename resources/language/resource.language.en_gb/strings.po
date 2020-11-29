@@ -1,0 +1,1258 @@
+# Kodi Media Center language file
+# Addon Name: Super Favourites
+# Addon id: plugin.program.super.favourites
+# Addon Provider: jmooremcc
+msgid ""
+msgstr ""
+"Project-Id-Version: Kodi Addons\n"
+"Report-Msgid-Bugs-To: https://forum.kodi.tv/\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kodi Translation Team\n"
+"Language-Team: Team-Kodi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30000"
+msgid "Super Favourites"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Super Favourite"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Super Favourites Menu"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Create new Super Folder"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Super Favourite settings"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Add to %s favourites"
+msgstr ""
+
+msgctxt "#30007"
+msgid "Copy favourite"
+msgstr ""
+
+msgctxt "#30008"
+msgid "Move favourite"
+msgstr ""
+
+msgctxt "#30009"
+msgid "Remove favourite"
+msgstr ""
+
+msgctxt "#30010"
+msgid "Rename favourite"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Remove Super Folder"
+msgstr ""
+
+msgctxt "#30012"
+msgid "Rename Super Folder"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Please enter a name for this Super Folder"
+msgstr ""
+
+msgctxt "#30014"
+msgid "The %s Super Folder already exists"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Please enter a new name for the %s Super Folder"
+msgstr ""
+
+msgctxt "#30016"
+msgid "This will remove the %s Super Folder"
+msgstr ""
+
+msgctxt "#30017"
+msgid "along with all its contents"
+msgstr ""
+
+msgctxt "#30018"
+msgid "Are you sure?"
+msgstr ""
+
+msgctxt "#30019"
+msgid "Choose Super Folder to copy favourite to"
+msgstr ""
+
+msgctxt "#30020"
+msgid "Choose Super Folder to move favourite to"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Please enter a new name for this favourite"
+msgstr ""
+
+msgctxt "#30022"
+msgid "Display"
+msgstr ""
+
+msgctxt "#30023"
+msgid "Show new Super Folder item"
+msgstr ""
+
+msgctxt "#30024"
+msgid "Show Kodi favourites item"
+msgstr ""
+
+msgctxt "#30026"
+msgid "Quickstart hotkey"
+msgstr ""
+
+msgctxt "#30027"
+msgid "None"
+msgstr ""
+
+msgctxt "#30028"
+msgid "F1"
+msgstr ""
+
+msgctxt "#30029"
+msgid "F2"
+msgstr ""
+
+msgctxt "#30030"
+msgid "F3"
+msgstr ""
+
+msgctxt "#30031"
+msgid "F4"
+msgstr ""
+
+msgctxt "#30032"
+msgid "F5"
+msgstr ""
+
+msgctxt "#30033"
+msgid "F6"
+msgstr ""
+
+msgctxt "#30034"
+msgid "F7"
+msgstr ""
+
+msgctxt "#30035"
+msgid "F8"
+msgstr ""
+
+msgctxt "#30036"
+msgid "F9"
+msgstr ""
+
+msgctxt "#30037"
+msgid "F10"
+msgstr ""
+
+msgctxt "#30038"
+msgid "F11"
+msgstr ""
+
+msgctxt "#30039"
+msgid "F12"
+msgstr ""
+
+msgctxt "#30040"
+msgid "Explore %s favourites"
+msgstr ""
+
+msgctxt "#30041"
+msgid "Move up"
+msgstr ""
+
+msgctxt "#30042"
+msgid "Move down"
+msgstr ""
+
+msgctxt "#30043"
+msgid "Choose thumbnail"
+msgstr ""
+
+msgctxt "#30044"
+msgid "Browse for image"
+msgstr ""
+
+msgctxt "#30046"
+msgid "Would you like to browse the current skin's built-in icons?"
+msgstr ""
+
+msgctxt "#30047"
+msgid "Add to Super Favourites"
+msgstr ""
+
+msgctxt "#30048"
+msgid "Standard context menu"
+msgstr ""
+
+msgctxt "#30049"
+msgid "Super Favourites settings"
+msgstr ""
+
+msgctxt "#30051"
+msgid "Show separator"
+msgstr ""
+
+msgctxt "#30052"
+msgid "Change playback mode"
+msgstr ""
+
+msgctxt "#30053"
+msgid "Launch Super Favourites"
+msgstr ""
+
+msgctxt "#30054"
+msgid "iSearch"
+msgstr ""
+
+msgctxt "#30055"
+msgid "Show iSearch menu item"
+msgstr ""
+
+msgctxt "#30056"
+msgid "Location of Super Favourites folder"
+msgstr ""
+
+msgctxt "#30057"
+msgid "Edit search term"
+msgstr ""
+
+msgctxt "#30058"
+msgid "G"
+msgstr ""
+
+msgctxt "#30059"
+msgid "Swipe Left"
+msgstr ""
+
+msgctxt "#30060"
+msgid "Swipe Right"
+msgstr ""
+
+msgctxt "#30061"
+msgid "Swipe Up"
+msgstr ""
+
+msgctxt "#30062"
+msgid "Swipe Down"
+msgstr ""
+
+msgctxt "#30063"
+msgid "Show iRecommend menu item"
+msgstr ""
+
+msgctxt "#30064"
+msgid "Show fanart"
+msgstr ""
+
+msgctxt "#30065"
+msgid "          Show in root folder only"
+msgstr ""
+
+msgctxt "#30066"
+msgid "[B]iSearch - %s[/B] [I](Click to edit search term)[/I]"
+msgstr ""
+
+msgctxt "#30067"
+msgid "Edit Super Folder"
+msgstr ""
+
+msgctxt "#30068"
+msgid "Edit Super Favourite"
+msgstr ""
+
+msgctxt "#30069"
+msgid "Enter password to temporarily unlock folder"
+msgstr ""
+
+msgctxt "#30070"
+msgid "General"
+msgstr ""
+
+msgctxt "#30071"
+msgid "Cache locked folder passwords for"
+msgstr ""
+
+msgctxt "#30072"
+msgid "Never"
+msgstr ""
+
+msgctxt "#30073"
+msgid "1 minute"
+msgstr ""
+
+msgctxt "#30074"
+msgid "5 minutes"
+msgstr ""
+
+msgctxt "#30075"
+msgid "15 minutes"
+msgstr ""
+
+msgctxt "#30076"
+msgid "Lock Super Folder"
+msgstr ""
+
+msgctxt "#30077"
+msgid "Remove lock"
+msgstr ""
+
+msgctxt "#30078"
+msgid "Enter the password to the remove lock"
+msgstr ""
+
+msgctxt "#30079"
+msgid "Enter the password you wish to use to lock folder"
+msgstr ""
+
+msgctxt "#30080"
+msgid "Sorry the password entered was incorrect"
+msgstr ""
+
+msgctxt "#30081"
+msgid "Super Folder lock has been permanently removed"
+msgstr ""
+
+msgctxt "#30082"
+msgid "Advanced"
+msgstr ""
+
+msgctxt "#30083"
+msgid "Automatically play playlists"
+msgstr ""
+
+msgctxt "#30084"
+msgid "Play playlist"
+msgstr ""
+
+msgctxt "#30085"
+msgid "Colourize name"
+msgstr ""
+
+msgctxt "#30086"
+msgid "Select a colour"
+msgstr ""
+
+msgctxt "#30087"
+msgid "[I]Decolourize[/I]"
+msgstr ""
+
+msgctxt "#30088"
+msgid "iRecommend"
+msgstr ""
+
+msgctxt "#30089"
+msgid "          Remember history"
+msgstr ""
+
+msgctxt "#30090"
+msgid "Movie information"
+msgstr ""
+
+msgctxt "#30091"
+msgid "Play trailer"
+msgstr ""
+
+msgctxt "#30092"
+msgid "Trailer is no longer available"
+msgstr ""
+
+msgctxt "#30093"
+msgid "          Enable metadata"
+msgstr ""
+
+msgctxt "#30094"
+msgid "%s settings"
+msgstr ""
+
+msgctxt "#30095"
+msgid "Tidy up context menu keywords"
+msgstr ""
+
+msgctxt "#30096"
+msgid "Super Folders inherit thumbnail and fanart"
+msgstr ""
+
+msgctxt "#30097"
+msgid "Remove thumbnail"
+msgstr ""
+
+msgctxt "#30098"
+msgid "iSearch using %s"
+msgstr ""
+
+msgctxt "#30099"
+msgid "Edit %s Favourite"
+msgstr ""
+
+msgctxt "#30100"
+msgid "None (clear current settings)"
+msgstr ""
+
+msgctxt "#30101"
+msgid "(no action)"
+msgstr ""
+
+msgctxt "#30102"
+msgid " (open folder)"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Edit iSearch item"
+msgstr ""
+
+msgctxt "#30104"
+msgid "Play using Super Favourites"
+msgstr ""
+
+msgctxt "#30105"
+msgid "Failed to play video"
+msgstr ""
+
+msgctxt "#30106"
+msgid "%s Favourites"
+msgstr ""
+
+msgctxt "#30107"
+msgid "Choose fanart"
+msgstr ""
+
+msgctxt "#30108"
+msgid "Remove fanart"
+msgstr ""
+
+msgctxt "#30109"
+msgid "Timeout in %d seconds..."
+msgstr ""
+
+msgctxt "#30110"
+msgid "Press a key to assign it to the Super Favourites hotkey"
+msgstr ""
+
+msgctxt "#30111"
+msgid "Programmable"
+msgstr ""
+
+msgctxt "#30112"
+msgid "[COLOR springgreen]Click to program hotkey[/COLOR]"
+msgstr ""
+
+msgctxt "#30113"
+msgid "Default fanart"
+msgstr ""
+
+msgctxt "#30114"
+msgid "Super Favourites"
+msgstr ""
+
+msgctxt "#30115"
+msgid "Choose"
+msgstr ""
+
+msgctxt "#30116"
+msgid "None"
+msgstr ""
+
+msgctxt "#30117"
+msgid "Choose default fanart"
+msgstr ""
+
+msgctxt "#30118"
+msgid "Hotkey functionality does not currently"
+msgstr ""
+
+msgctxt "#30119"
+msgid "work on an ATV2"
+msgstr ""
+
+msgctxt "#30120"
+msgid "UI Display name"
+msgstr ""
+
+msgctxt "#30121"
+msgid "Kodi"
+msgstr ""
+
+msgctxt "#30122"
+msgid "XBMC"
+msgstr ""
+
+msgctxt "#30123"
+msgid "New iSearch item found - %s"
+msgstr ""
+
+msgctxt "#30124"
+msgid "Do you wish to import into iSearch?"
+msgstr ""
+
+msgctxt "#30125"
+msgid "Import from remote file"
+msgstr ""
+
+msgctxt "#30126"
+msgid "Remote file"
+msgstr ""
+
+msgctxt "#30127"
+msgid "[COLOR springgreen]Click to import Super Favourites[/COLOR]"
+msgstr ""
+
+msgctxt "#30128"
+msgid "[COLOR springgreen]Click to export Super Favourites[/COLOR]"
+msgstr ""
+
+msgctxt "#30129"
+msgid "[B]Export[/B]"
+msgstr ""
+
+msgctxt "#30130"
+msgid "Do you wish to include your Super Favourite settings?"
+msgstr ""
+
+msgctxt "#30131"
+msgid "Choose a folder to export your Super Favourites to"
+msgstr ""
+
+msgctxt "#30132"
+msgid "Super Favourites successfully exported"
+msgstr ""
+
+msgctxt "#30133"
+msgid "Super Favourites successfully imported"
+msgstr ""
+
+msgctxt "#30134"
+msgid "Choose a zipfile to import into your Super Favourites"
+msgstr ""
+
+msgctxt "#30135"
+msgid "[B]Import[/B]"
+msgstr ""
+
+msgctxt "#30136"
+msgid "Do you want to overwrite your current settings?"
+msgstr ""
+
+msgctxt "#30137"
+msgid "Failed to import Super Favourites"
+msgstr ""
+
+msgctxt "#30138"
+msgid "Show unavailable addons"
+msgstr ""
+
+msgctxt "#30139"
+msgid "Show import remote file"
+msgstr ""
+
+msgctxt "#30140"
+msgid "Importing %s from"
+msgstr ""
+
+msgctxt "#30141"
+msgid "Please wait, this may take a while"
+msgstr ""
+
+msgctxt "#30142"
+msgid "Play Media"
+msgstr ""
+
+msgctxt "#30143"
+msgid "Activate Window (try if Play Media fails)"
+msgstr ""
+
+msgctxt "#30144"
+msgid "Run Plugin (try if video repeats)"
+msgstr ""
+
+msgctxt "#30145"
+msgid "Show iPlay menu item"
+msgstr ""
+
+msgctxt "#30146"
+msgid "iPlay - %s playlist manager"
+msgstr ""
+
+msgctxt "#30148"
+msgid "Browse for playlist"
+msgstr ""
+
+msgctxt "#30149"
+msgid "Copy playlists to Super Favourites folder"
+msgstr ""
+
+msgctxt "#30150"
+msgid "Delete playlist"
+msgstr ""
+
+msgctxt "#30151"
+msgid "iPlay"
+msgstr ""
+
+msgctxt "#30152"
+msgid "Allow deletion of playlists created with Kodi"
+msgstr ""
+
+msgctxt "#30153"
+msgid "Enter M3U playlist URL"
+msgstr ""
+
+msgctxt "#30154"
+msgid "Enable debug mode"
+msgstr ""
+
+msgctxt "#30155"
+msgid "No valid M3U playlist found at"
+msgstr ""
+
+msgctxt "#30156"
+msgid "Please enter a name for this playlist"
+msgstr ""
+
+msgctxt "#30157"
+msgid "          Show synopsis"
+msgstr ""
+
+msgctxt "#30161"
+msgid "Other Features"
+msgstr ""
+
+msgctxt "#30162"
+msgid "Autostart Super Favourites"
+msgstr ""
+
+msgctxt "#30163"
+msgid "iRemember"
+msgstr ""
+
+msgctxt "#30164"
+msgid "Add [I]%s[/I]  to iRemember"
+msgstr ""
+
+msgctxt "#30165"
+msgid "Remove [I]%s[/I]"
+msgstr ""
+
+msgctxt "#30166"
+msgid "Create new manual entry"
+msgstr ""
+
+msgctxt "#30167"
+msgid "Show iRemember menu item"
+msgstr ""
+
+msgctxt "#30168"
+msgid "Manually edit favourite"
+msgstr ""
+
+msgctxt "#30169"
+msgid "Select type for %s"
+msgstr ""
+
+msgctxt "#30170"
+msgid "Enter command for %s"
+msgstr ""
+
+msgctxt "#30172"
+msgid "PlayMedia"
+msgstr ""
+
+msgctxt "#30173"
+msgid "ActivateWindow"
+msgstr ""
+
+msgctxt "#30174"
+msgid "RunScript"
+msgstr ""
+
+msgctxt "#30175"
+msgid "Enter window ID for %s"
+msgstr ""
+
+msgctxt "#30176"
+msgid "Enter window ID"
+msgstr ""
+
+msgctxt "#30177"
+msgid "Cut Super Favourite"
+msgstr ""
+
+msgctxt "#30178"
+msgid "Copy Super Favourite"
+msgstr ""
+
+msgctxt "#30179"
+msgid "Paste Super Favourite"
+msgstr ""
+
+msgctxt "#30180"
+msgid "Cut Super Folder"
+msgstr ""
+
+msgctxt "#30181"
+msgid "Copy Super Folder"
+msgstr ""
+
+msgctxt "#30182"
+msgid "Paste Super Folder"
+msgstr ""
+
+msgctxt "#30183"
+msgid "Do you want to paste the %s Super Folder"
+msgstr ""
+
+msgctxt "#30184"
+msgid "as a link or copy the complete folder?"
+msgstr ""
+
+msgctxt "#30185"
+msgid "Copy"
+msgstr ""
+
+msgctxt "#30186"
+msgid "Link"
+msgstr ""
+
+msgctxt "#30187"
+msgid "Super Folders cannot be 'cut' to %s favourites"
+msgstr ""
+
+msgctxt "#30188"
+msgid "Do you want to create a link to the %s"
+msgstr ""
+
+msgctxt "#30189"
+msgid "Super Folder instead?"
+msgstr ""
+
+msgctxt "#30190"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "#30191"
+msgid "Failed to paste the %s Super Folder, please check logs"
+msgstr ""
+
+msgctxt "#30192"
+msgid "%s - Copy %d"
+msgstr ""
+
+msgctxt "#30193"
+msgid "ExecuteBuiltin"
+msgstr ""
+
+msgctxt "#30194"
+msgid "Edit description"
+msgstr ""
+
+msgctxt "#30195"
+msgid "Quickly search all the popular addons from one place.[CR]Also provides access to the iRecommend and iRemember features."
+msgstr ""
+
+msgctxt "#30196"
+msgid "Browse your playlists.[CR]Copy playlists to Super Favourites.[CR]Link to online playlists."
+msgstr ""
+
+msgctxt "#30197"
+msgid "Browse your Kodi favourites.[CR]Launch or edit your Kodi favourites directly from within Super Favourites.[CR]Copy your Kodi favourites to Super Favourites."
+msgstr ""
+
+msgctxt "#30198"
+msgid "Import Super Favourites from a remote location (configure via the Advanced settings tab)."
+msgstr ""
+
+msgctxt "#30199"
+msgid "Create a new Super Folder within the current folder."
+msgstr ""
+
+msgctxt "#30200"
+msgid "Populate iSearch with [I]%s.[/I]"
+msgstr ""
+
+msgctxt "#30201"
+msgid "View your previously iRemembered keywords.[CR]Saves repeatedly typing searches you perform frequently."
+msgstr ""
+
+msgctxt "#30202"
+msgid "Perform an 'Also Watched' IMDB search using [I]%s[/I]  (%s)"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Set view list type (0 - default)"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Remember current view type"
+msgstr ""
+
+msgctxt "#30205"
+msgid "Perform a keyword IMDB search using [I]%s.[/I]"
+msgstr ""
+
+msgctxt "#30206"
+msgid "Search %s for [I]%s.[/I]"
+msgstr ""
+
+msgctxt "#30207"
+msgid "Would you like to disable caching on this favourite?[CR]Particularly useful for 'Search' type favourites"
+msgstr ""
+
+msgctxt "#30208"
+msgid "Disable 'movie content' view - prevents rectangular thumbnails"
+msgstr ""
+
+msgctxt "#30209"
+msgid "Copy item and metadata"
+msgstr ""
+
+msgctxt "#30210"
+msgid "Paste thumbnail"
+msgstr ""
+
+msgctxt "#30211"
+msgid "Paste fanart"
+msgstr ""
+
+msgctxt "#30212"
+msgid "Paste description"
+msgstr ""
+
+msgctxt "#30213"
+msgid "Sort favourites alphabetically"
+msgstr ""
+
+msgctxt "#30214"
+msgid "          Quick select (may not return accurate recommendations)"
+msgstr ""
+
+msgctxt "#30215"
+msgid "Perform an 'Also Watched' IMDB search using [I]%s[/I]"
+msgstr ""
+
+msgctxt "#30216"
+msgid "View fullsize images"
+msgstr ""
+
+msgctxt "#30217"
+msgid "Addon"
+msgstr ""
+
+msgctxt "#30218"
+msgid "Clear current Super Favourites when importing"
+msgstr ""
+
+msgctxt "#30219"
+msgid "Quick launch Super Favourites"
+msgstr ""
+
+msgctxt "#30220"
+msgid "Now playing"
+msgstr ""
+
+msgctxt "#30221"
+msgid "Show startup message"
+msgstr ""
+
+msgctxt "#30222"
+msgid "Startup message text"
+msgstr ""
+
+msgctxt "#30223"
+msgid "Label favourites numerically"
+msgstr ""
+
+msgctxt "#30224"
+msgid "Show iExplore menu item"
+msgstr ""
+
+msgctxt "#30225"
+msgid "iExplore"
+msgstr ""
+
+msgctxt "#30226"
+msgid "Browse to folder to iExplore"
+msgstr ""
+
+msgctxt "#30227"
+msgid "Browse for playable media"
+msgstr ""
+
+msgctxt "#30228"
+msgid "Browse [I]%s[/I]  for playable media"
+msgstr ""
+
+msgctxt "#30229"
+msgid "Play [I]%s[/I]"
+msgstr ""
+
+msgctxt "#30230"
+msgid "Play from here"
+msgstr ""
+
+msgctxt "#30231"
+msgid "Play folder"
+msgstr ""
+
+msgctxt "#30232"
+msgid "Play Super Folder"
+msgstr ""
+
+msgctxt "#30233"
+msgid "Enable autoplay"
+msgstr ""
+
+msgctxt "#30234"
+msgid "Disable autoplay"
+msgstr ""
+
+msgctxt "#30235"
+msgid "Explore Super Folder"
+msgstr ""
+
+msgctxt "#30236"
+msgid " (play folder)"
+msgstr ""
+
+msgctxt "#30237"
+msgid "Set sort order"
+msgstr ""
+
+msgctxt "#30238"
+msgid "Default (see settings)"
+msgstr ""
+
+msgctxt "#30239"
+msgid "Alphabetical"
+msgstr ""
+
+msgctxt "#30240"
+msgid "Manual"
+msgstr ""
+
+msgctxt "#30241"
+msgid "Download"
+msgstr ""
+
+msgctxt "#30242"
+msgid "          Download folder"
+msgstr ""
+
+msgctxt "#30243"
+msgid "Do you wish to stop the current playback?"
+msgstr ""
+
+msgctxt "#30244"
+msgid "(This maybe necessary to allow download)"
+msgstr ""
+
+msgctxt "#30245"
+msgid "[COLOR springgreen]Download succeeded[/COLOR]"
+msgstr ""
+
+msgctxt "#30246"
+msgid "[COLOR red]Download failed[/COLOR]"
+msgstr ""
+
+msgctxt "#30247"
+msgid "Download failed"
+msgstr ""
+
+msgctxt "#30248"
+msgid "No response from server"
+msgstr ""
+
+msgctxt "#30249"
+msgid "Unknown filesize"
+msgstr ""
+
+msgctxt "#30250"
+msgid "Unable to download"
+msgstr ""
+
+msgctxt "#30251"
+msgid "%s - Confirm Download"
+msgstr ""
+
+msgctxt "#30252"
+msgid "Complete file is %dMB"
+msgstr ""
+
+msgctxt "#30253"
+msgid "Continue with download?"
+msgstr ""
+
+msgctxt "#30254"
+msgid "Confirm"
+msgstr ""
+
+msgctxt "#30255"
+msgid "%s - Download Progress - %s%%"
+msgstr ""
+
+msgctxt "#30256"
+msgid "Download folder does not exists"
+msgstr ""
+
+msgctxt "#30257"
+msgid "Please configure a valid download folder now"
+msgstr ""
+
+msgctxt "#30258"
+msgid "Paste item"
+msgstr ""
+
+msgctxt "#30259"
+msgid "Download using Super Favourites"
+msgstr ""
+
+msgctxt "#30260"
+msgid "No valid item to add to Super Favourites"
+msgstr ""
+
+msgctxt "#30261"
+msgid "No valid item to download via Super Favourites"
+msgstr ""
+
+msgctxt "#30262"
+msgid "Paste metadata"
+msgstr ""
+
+msgctxt "#30263"
+msgid "Remove metadata"
+msgstr ""
+
+msgctxt "#30264"
+msgid "Description"
+msgstr ""
+
+msgctxt "#30265"
+msgid "Metadata"
+msgstr ""
+
+msgctxt "#30266"
+msgid "Thumbnail"
+msgstr ""
+
+msgctxt "#30267"
+msgid "Fanart"
+msgstr ""
+
+msgctxt "#30268"
+msgid "iSearch - "
+msgstr ""
+
+msgctxt "#30269"
+msgid "Hotkey assignment cancelled"
+msgstr ""
+
+msgctxt "#30270"
+msgid "Hotkey successfully assigned"
+msgstr ""
+
+msgctxt "#30271"
+msgid "This will only work if [COLOR springgreen]%s[/COLOR] is setup as a source"
+msgstr ""
+
+msgctxt "#30272"
+msgid "Do you wish to continue?"
+msgstr ""
+
+msgctxt "#30273"
+msgid "ShowPicture"
+msgstr ""
+
+msgctxt "#35000"
+msgid "Global Menu"
+msgstr ""
+
+msgctxt "#35001"
+msgid "Enable global Super Favourites menu"
+msgstr ""
+
+msgctxt "#35002"
+msgid "Style"
+msgstr ""
+
+msgctxt "#35003"
+msgid "Menu"
+msgstr ""
+
+msgctxt "#35004"
+msgid "Dialog"
+msgstr ""
+
+msgctxt "#35005"
+msgid "Menu Items"
+msgstr ""
+
+msgctxt "#35006"
+msgid "Add to Super Favourites"
+msgstr ""
+
+msgctxt "#35007"
+msgid "Default iSearch (search using the first addon in the list)"
+msgstr ""
+
+msgctxt "#35008"
+msgid "iSearch"
+msgstr ""
+
+msgctxt "#35009"
+msgid "iRecommend"
+msgstr ""
+
+msgctxt "#35010"
+msgid "Copy item and metadata"
+msgstr ""
+
+msgctxt "#35011"
+msgid "View item images"
+msgstr ""
+
+msgctxt "#35012"
+msgid "Super Favourite settings"
+msgstr ""
+
+msgctxt "#35013"
+msgid "Selected addon settings"
+msgstr ""
+
+msgctxt "#35014"
+msgid "Standard context menu"
+msgstr ""
+
+msgctxt "#35015"
+msgid "The Super Favourites global menu is now configurable."
+msgstr ""
+
+msgctxt "#35017"
+msgid "Would you like to configure it now?"
+msgstr ""
+
+msgctxt "#35018"
+msgid "Edit name when adding to Super Favourites"
+msgstr ""
+
+msgctxt "#35019"
+msgid "Extensions"
+msgstr ""
+
+msgctxt "#35020"
+msgid "Quick launch"
+msgstr ""
+
+msgctxt "#35021"
+msgid "Artwork settings"
+msgstr ""
+
+msgctxt "#35022"
+msgid "Thumbnail"
+msgstr ""
+
+msgctxt "#35023"
+msgid "Fanart"
+msgstr ""
+
+msgctxt "#35024"
+msgid "None"
+msgstr ""
+
+msgctxt "#35025"
+msgid "Landscape image"
+msgstr ""
+
+msgctxt "#35026"
+msgid "Banner image"
+msgstr ""
+
+msgctxt "#35027"
+msgid "Poster image"
+msgstr ""
+
+msgctxt "#35028"
+msgid "Set view content type"
+msgstr ""
+
+msgctxt "#35029"
+msgid "Files"
+msgstr ""
+
+msgctxt "#35030"
+msgid "Songs"
+msgstr ""
+
+msgctxt "#35031"
+msgid "Artists"
+msgstr ""
+
+msgctxt "#35032"
+msgid "Albums"
+msgstr ""
+
+msgctxt "#35033"
+msgid "Movies"
+msgstr ""
+
+msgctxt "#35034"
+msgid "TV shows"
+msgstr ""
+
+msgctxt "#35035"
+msgid "Episodes"
+msgstr ""
+
+msgctxt "#35036"
+msgid "Music videos"
+msgstr ""
+
+msgctxt "#35037"
+msgid "Default"
+msgstr ""
+
+msgctxt "#35038"
+msgid "Show Super Favourites menu item on standard context menu"
+msgstr ""
+
+msgctxt "#35040"
+msgid "Addons on the whitelist will not display the global Super Favourites menu"
+msgstr ""
+
+msgctxt "#35041"
+msgid "Add to whitelist"
+msgstr ""
+
+msgctxt "#35042"
+msgid "Remove from whitelist"
+msgstr ""
+
+msgctxt "#35043"
+msgid "          Label numerically on quick launch menu"
+msgstr ""
+
+msgctxt "#35044"
+msgid "          Remember previous folder"
+msgstr ""
+
+msgctxt "#35045"
+msgid "          Show menu item on standard context menu"
+msgstr ""
+
+msgctxt "#35046"
+msgid "          Show on Super Favourites context menu"
+msgstr ""
+
