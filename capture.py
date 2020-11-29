@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2014-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,10 +21,11 @@
 
 
 
-# import xbmc
-# import xbmcgui
-# import xbmcaddon
-from kodi_six import xbmc, xbmcgui, xbmcaddon
+import xbmc
+import xbmcgui
+import xbmcaddon
+import xbmcvfs
+
 import os, sys
 
 from utils import HOME
@@ -45,8 +47,11 @@ _QUICKLAUNCH  = 1100
 
 _EXTRABASE    = 10000
 
+
+
 try:
     import utils
+    utils.log("***module capture called")
     ADDON   = utils.ADDON
     ADDONID = utils.ADDONID
     ROOT    = utils.ROOT
@@ -89,6 +94,7 @@ def activateWindow(window):
 
 
 def doStandard(useScript=True):
+
     window = xbmcgui.getCurrentWindowId()
 
     if window == 10000: #home
@@ -130,7 +136,7 @@ def getPlugins():
 
     import os, sys
 
-    path = xbmc.translatePath(os.path.join(ROOT, 'Plugins'))
+    path = xbmcvfs.translatePath(os.path.join(ROOT, 'Plugins'))
     sys.path.insert(0, path)
 
     plugin  = []
@@ -218,11 +224,12 @@ def launchDefaultSearch(keyword):
     else:
         import re       
         cmd = re.compile('"(.+?)"').search(cmd).group(1)
-        xbmc.executebuiltin('XBMC.Container.Update(%s)' % cmd)
+        xbmc.executebuiltin('Container.Update(%s)' % cmd)
 
          
 def doMenu(mode):
     import menuUtils
+
 
     utils.log('**** Context Menu Information ****')
 
@@ -258,7 +265,7 @@ def doMenu(mode):
     try:    params = menuUtils.getCurrentParams()
     except: params = None
 
-    if params == None:
+    if params is None:
         doStandard(useScript=False)
         return
 
@@ -307,6 +314,9 @@ def doMenu(mode):
             localAddon = utils.findAddon(path)           
             if localAddon:
                 name = utils.getSettingsLabel(localAddon)
+                if name is None:
+                    return
+
                 menu.append((name, _SETTINGS))
        
 
@@ -363,7 +373,8 @@ def doMenu(mode):
         choice = menus.showMenu(ADDONID, menu, useBuiltin=False) #False to allow right-click to std context menu
 
     utils.log('selection\t\t: %s' % choice)
-    
+
+
     if choice >= _EXTRABASE:       
         module = (choice - _EXTRABASE) / 1000
         option = (choice - _EXTRABASE) % 1000
@@ -428,7 +439,7 @@ def doMenu(mode):
         if window not in valid:
             window = 10025 #video window
 
-        import urllib   
+        from urllib.parse import quote_plus
 
         if choice == _RECOMMEND:
             mode = _RECOMMEND_KEY
@@ -438,10 +449,10 @@ def doMenu(mode):
         if mode == _SUPERSEARCHDEF:
             return launchDefaultSearch(label)
 
-        try:    meta = urllib.quote_plus(utils.convertDictToURL(meta))
+        try:    meta = quote_plus(utils.convertDictToURL(meta))
         except: meta = ''
              
-        cmd = 'ActivateWindow(%d,"plugin://%s/?mode=%d&keyword=%s&image=%s&fanart=%s&meta=%s")' % (window, ADDONID, mode, urllib.quote_plus(label), urllib.quote_plus(thumb), urllib.quote_plus(fanart), meta)
+        cmd = 'ActivateWindow(%d,"plugin://%s/?mode=%d&keyword=%s&image=%s&fanart=%s&meta=%s")' % (window, ADDONID, mode, quote_plus(label), quote_plus(thumb), quote_plus(fanart), meta)
 
         activateCommand(cmd)
 
@@ -449,7 +460,7 @@ def doMenu(mode):
         #if not fanart:
         #    fanart = thumb
 
-        cmd = menuUtils.getCmd(path, fanart, desc, window, filename, isFolder, meta)
+        cmd = menuUtils.getCmd(path, fanart, desc, window, filename, isFolder, meta, None)
 
         import clipboard
         clipboard.setPasteProperties(thumb, fanart, desc, label, cmd, meta)
@@ -463,6 +474,7 @@ def doMenu(mode):
 
 
 def menu(mode):
+
     if xbmcgui.Window(10000).getProperty('SF_MENU_VISIBLE') == 'true':
         return
 
@@ -477,6 +489,7 @@ def menu(mode):
 
 
 def main():
+
     if xbmc.getCondVisibility('Window.IsActive(favourites)') == 1:
         return doStandard(useScript=False)
 

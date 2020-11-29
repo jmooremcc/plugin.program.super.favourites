@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2015
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,10 +21,10 @@
 #  this module provides a wrapper around the Kodi xbmcvfs class
 
 
-# import xbmcvfs
-from kodi_six import xbmcvfs
-import os
+import xbmcvfs
 
+import os
+import utils
 
 def exists(filename):
     if xbmcvfs.exists(filename):
@@ -54,11 +55,11 @@ def isdir(folder):
         return True
 
     import xbmc
-    folder = xbmc.translatePath(folder)
+    folder = xbmcvfs.translatePath(folder)
     if folder.endswith('\\') or folder.endswith('/'):
         folder = folder[:-1]
 
-    return stat.S_ISDIR(xbmcvfs.Stat(xbmc.translatePath(folder)).st_mode())
+    return stat.S_ISDIR(xbmcvfs.Stat(xbmcvfs.translatePath(folder)).st_mode())
    
 
 def file(filename, type):
@@ -70,8 +71,11 @@ def size(filename):
 
 
 def read(filename):
+    utils.log("***filename: %s" % filename)
     f = file(filename, 'r')
-    content = f.read()
+    # content = f.read()
+    content = f.readBytes()
+    content = str(content)
     f.close()
     return content
 

@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2013-2014
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,10 +19,10 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-# import xbmcgui
-# import xbmcaddon
-from kodi_six import xbmc, xbmcgui, xbmcaddon
+import xbmc
+import xbmcgui
+import xbmcaddon
+
 import os
 
 ACTION_BACK          = 92
@@ -42,7 +43,7 @@ class ImageBrowser(xbmcgui.WindowXMLDialog):
         
 
     def __init__(self, addonID, items):
-        super(ImageBrowser, self).__init__()
+        super(ImageBrowser, self).__init__(None, None)
         self.items = items
 
         

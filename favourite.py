@@ -1,6 +1,6 @@
 
 #       Copyright (C) 2013-2015
-#       Sean Poyser (seanpoyser@gmail.com)
+#       Sean Poyser (seanpoyser@gmail.com)#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,12 +18,12 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-from kodi_six import xbmc
+import xbmc, xbmcgui, xbmcvfs
+
 import os
 import re
 import urllib
-
+from urllib.parse import quote_plus, unquote_plus
 import utils
 import sfile
 import favourite
@@ -34,7 +34,8 @@ SHOWUNAVAIL = utils.ADDON.getSetting('SHOWUNAVAIL') == 'true'
 
 
 def getFavourites(file, limit=10000, validate=True, superSearch=False, chooser=False):
-    import xbmcgui
+    # import xbmcgui
+
 
     prefix = ''
     if not chooser:
@@ -51,7 +52,7 @@ def getFavourites(file, limit=10000, validate=True, superSearch=False, chooser=F
 
     items = []
 
-    faves = re.compile('<favourite(.+?)</favourite>').findall(xml)
+    faves = re.compile('<favourite (.+?)</favourite>').findall(xml)
 
     for fave in faves:
         fave = fave.replace('&quot;', '&_quot_;')
@@ -162,7 +163,7 @@ def removeHome(cmd):
 
 def writeFavourites(file, faves):
     kodiFile = os.path.join('special://profile', utils.FILENAME)
-    isKodi = xbmc.translatePath(file) == xbmc.translatePath(kodiFile)
+    isKodi = xbmcvfs.translatePath(file) == xbmcvfs.translatePath(kodiFile)
 
     f = sfile.file(file, 'w')
 
@@ -268,7 +269,7 @@ def findFave(file, cmd):
         if equals(fave[2], cmd):
             return fave, idx, len(faves)
 
-    search = os.path.join(xbmc.translatePath(utils.ROOT), 'Search', utils.FILENAME).lower()
+    search = os.path.join(xbmcvfs.translatePath(utils.ROOT), 'Search', utils.FILENAME).lower()
 
     if file.lower() != search:
         return None, -1, 0
@@ -482,7 +483,7 @@ def updateSFOptions(cmd, options):
             values += '%s=%s&' % (key, value)
         
     if len(values) > 0:
-        cmd += suffix + 'sf_options=%s_options_sf"' % urllib.quote_plus(values)
+        cmd += suffix + 'sf_options=%s_options_sf"' % quote_plus(values)
     else:
         cmd += '"'
 
@@ -495,7 +496,7 @@ def updateSFOptions(cmd, options):
 
 
 def getSFOptions(cmd):
-    try:    options = urllib.unquote_plus(re.compile('sf_options=(.+?)_options_sf').search(cmd).group(1))
+    try:    options = unquote_plus(re.compile('sf_options=(.+?)_options_sf').search(cmd).group(1))
     except: return {}
 
     params = get_params(options)
@@ -564,7 +565,7 @@ def get_params(path):
     for pair in pairs:
         split = pair.split('=')
         if len(split) > 1:
-            #params[split[0]] = urllib.unquote_plus(split[1])
+            #params[split[0]] = unquote_plus(split[1])
             params[split[0]] = split[1]
 
     return params
@@ -592,13 +593,13 @@ def _removeFanart(cmd):
 def _getFanart(cmd):
     cmd = cmd.replace(',return', '')
  
-    try:    return urllib.unquote_plus(re.compile('sf_fanart=(.+?)_"\)').search(cmd).group(1))
+    try:    return unquote_plus(re.compile('sf_fanart=(.+?)_"\)').search(cmd).group(1))
     except: pass
 
-    cmd = urllib.unquote_plus(cmd)
+    cmd = unquote_plus(cmd)
     cmd = cmd.replace(',return', '')
 
-    try:    return urllib.unquote_plus(re.compile('sf_fanart=(.+?)_"\)').search(cmd).group(1))
+    try:    return unquote_plus(re.compile('sf_fanart=(.+?)_"\)').search(cmd).group(1))
     except: pass
 
     return ''       

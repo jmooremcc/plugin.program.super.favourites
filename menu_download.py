@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2016-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,8 +19,9 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-from kodi_six import xbmc
+import xbmc
+
+
 
 import menuUtils
 
@@ -27,7 +29,7 @@ import menuUtils
 def download(silent=False):
     params = menuUtils.getCurrentParams()
 
-    if params == None or ('file' not in params):
+    if params is None or ('file' not in params):
         if not silent:
             import utils
             utils.DialogOK(utils.GETTEXT(30261))

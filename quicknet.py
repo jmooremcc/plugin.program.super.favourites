@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2013-2014
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -25,8 +26,7 @@ import urllib.request
 import urllib
 # import urllib2
 
-# import xbmc
-from kodi_six import xbmc
+import xbmc
 
 import utils
 import sfile
@@ -64,7 +64,7 @@ def getURLNoCache(url, agent=None, tidy=True):
 def getURL(url, maxSec=0, agent=None, tidy=True):
     purgeCache()
     
-    if url == None:
+    if url is None:
         return None
 
     if maxSec > 0:

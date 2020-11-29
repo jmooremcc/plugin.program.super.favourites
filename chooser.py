@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2013-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -23,16 +24,16 @@
 
 
 
-# import xbmc
-# import xbmcgui
-from kodi_six import xbmc, xbmcgui
-import os, sys
-import urllib
+import os
+import sys
+from urllib.parse import unquote_plus, quote_plus
 
-import utils
-import parameters
 import favourite
+import parameters
 import sfile
+import utils
+import xbmc
+import xbmcgui
 
 ADDON       = utils.ADDON
 HOME        = utils.HOME
@@ -133,7 +134,7 @@ class Main:
         else:                
             self.FULLPATH = os.path.join(utils.PROFILE, self.PATH)
 
-        self.FULLPATH = urllib.unquote_plus(self.FULLPATH)
+        self.FULLPATH = unquote_plus(self.FULLPATH)
 
                 
     def getFaves(self):
@@ -215,7 +216,7 @@ class Main:
             
 class MainGui(xbmcgui.WindowXMLDialog):
     def __init__(self, *args, **kwargs):
-        xbmcgui.WindowXMLDialog.__init__( self )
+        xbmcgui.WindowXMLDialog.__init__( self, None, None )
         self.faves       = kwargs.get('faves')
         self.property    = kwargs.get('property')
         self.changeTitle = kwargs.get('changeTitle')
@@ -256,8 +257,8 @@ class MainGui(xbmcgui.WindowXMLDialog):
             icon = fave[1]
             if not icon:
                 icon = ICON 
-            
-            listitem.setIconImage(icon)
+
+            listitem.setArt({'icon': icon})
             listitem.setProperty('Icon', fave[1])
 
             cmd = fave[2]
@@ -299,9 +300,9 @@ class MainGui(xbmcgui.WindowXMLDialog):
                 thumb = os.path.join(HOME, 'resources', 'media', 'icon_favourites.png')
 
             label    = GETTEXT(30106) % DISPLAYNAME
-            listitem = xbmcgui.ListItem(label) 
+            listitem = xbmcgui.ListItem(label)
 
-            listitem.setIconImage(thumb)
+            listitem.setArt({'icon': thumb})
             listitem.setProperty('Icon',     thumb)
             listitem.setProperty('Path',     fullpath)
             listitem.setProperty('IsFolder', 'true')
@@ -326,8 +327,9 @@ class MainGui(xbmcgui.WindowXMLDialog):
             thumb    = getFolderThumb(fullpath) if self.mode != 'root' else ICON
 
             #open folder
-            listitem = xbmcgui.ListItem(path + GETTEXT(30102))                     
-            listitem.setIconImage(thumb)
+            listitem = xbmcgui.ListItem(path + GETTEXT(30102))
+
+            listitem.setArt({'icon': thumb})
             listitem.setProperty('Icon',     thumb)
             listitem.setProperty('Path',     self.path)
             listitem.setProperty('IsFolder', 'open')
@@ -335,8 +337,9 @@ class MainGui(xbmcgui.WindowXMLDialog):
 
             #play folder
             if self.includePlay:
-                listitem = xbmcgui.ListItem(path + GETTEXT(30236))                     
-                listitem.setIconImage(thumb)
+                listitem = xbmcgui.ListItem(path + GETTEXT(30236))
+
+                listitem.setArt({'icon': thumb})
                 listitem.setProperty('Icon',     thumb)
                 listitem.setProperty('Path',     self.path)
                 listitem.setProperty('IsFolder', 'play')
@@ -406,16 +409,16 @@ class MainGui(xbmcgui.WindowXMLDialog):
                     if isFolder.lower() == 'open':
                         cmd  = 'ActivateWindow(10025,"plugin://'
                         cmd += utils.ADDONID + '/?'
-                        cmd += 'label=%s&' % urllib.quote_plus(favLabel)
-                        cmd += 'folder=%s' % urllib.quote_plus(favPath)
+                        cmd += 'label=%s&' % quote_plus(favLabel)
+                        cmd += 'folder=%s' % quote_plus(favPath)
                         cmd += '",return)'
                         favPath = cmd
                     if isFolder.lower() == 'play':
                         cmd  = 'PlayMedia("plugin://'
                         cmd += utils.ADDONID + '/?'
-                        cmd += 'label=%s&' % urllib.quote_plus(favLabel)
-                        cmd += 'mode=%s&'  % urllib.quote_plus('5400')
-                        cmd += 'folder=%s' % urllib.quote_plus(favPath)
+                        cmd += 'label=%s&' % quote_plus(favLabel)
+                        cmd += 'mode=%s&'  % quote_plus('5400')
+                        cmd += 'folder=%s' % quote_plus(favPath)
                         cmd += '")'
                         favPath = cmd                        
                 
@@ -426,7 +429,7 @@ class MainGui(xbmcgui.WindowXMLDialog):
                         favLabel = keyboard.getText()
 
                 if favPath.lower().startswith('activatewindow') and '?' in favPath:
-                    text    = '?content_type=%s&' % urllib.quote_plus('Chooser')
+                    text    = '?content_type=%s&' % quote_plus('Chooser')
                     favPath = favPath.replace('?', text)
                         
                 xbmc.executebuiltin('Skin.SetString(%s,%s)' % ( '%s.%s' % ( self.property, 'Path'),   favPath.decode('string-escape')))
@@ -467,7 +470,7 @@ class MainGui(xbmcgui.WindowXMLDialog):
 
         
 def MyDialog(faves, property, changeTitle, path, mode, includePlay):
-    w = MainGui('DialogSelect.xml', HOME, faves=faves, property=property, changeTitle=changeTitle, path=urllib.unquote_plus(path), mode=mode, includePlay=includePlay)
+    w = MainGui('DialogSelect.xml', HOME, faves=faves, property=property, changeTitle=changeTitle, path=unquote_plus(path), mode=mode, includePlay=includePlay)
     w.doModal()
     del w
 
