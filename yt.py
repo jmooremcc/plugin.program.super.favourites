@@ -1,7 +1,7 @@
 
 #
 #  Copyright (C) 2013 Sean Poyser
-#
+#  Portions Copyright (c) 2020 John Moore
 #
 #  This code is a derivative of the YouTube plugin for XBMC
 #  released under the terms of the GNU General Public License as published by
@@ -97,7 +97,8 @@ def PlayVideo(id):
     title = video['title']
     image = video['thumbnail']
 
-    liz = xbmcgui.ListItem(title, iconImage=image, thumbnailImage=image)
+    liz = xbmcgui.ListItem(title)
+    liz.setArt({'icon':image, 'thumb':image})
 
     liz.setInfo( type="Video", infoLabels={ "Title": title} )
 
@@ -182,14 +183,14 @@ def Scrape(html):
         key = int(url_desc_map[u"itag"][0])
         url = u""
         if url_desc_map.has_key(u"url"):
-            url = urllib.unquote(url_desc_map[u"url"][0])
+            url = urllib.parse.unquote(url_desc_map[u"url"][0])
         elif url_desc_map.has_key(u"conn") and url_desc_map.has_key(u"stream"):
-            url = urllib.unquote(url_desc_map[u"conn"][0])
+            url = urllib.parse.unquote(url_desc_map[u"conn"][0])
             if url.rfind("/") < len(url) -1:
                 url = url + "/"
-            url = url + urllib.unquote(url_desc_map[u"stream"][0])
+            url = url + urllib.parse.unquote(url_desc_map[u"stream"][0])
         elif url_desc_map.has_key(u"stream") and not url_desc_map.has_key(u"conn"):
-            url = urllib.unquote(url_desc_map[u"stream"][0])
+            url = urllib.parse.unquote(url_desc_map[u"stream"][0])
 
         if url_desc_map.has_key(u"sig"):
             url = url + u"&signature=" + url_desc_map[u"sig"][0]
@@ -287,15 +288,15 @@ global allLocalFunNamesTab
 global allLocalVarNamesTab
 
 def _extractVarLocalFuns(match):
-	varName, objBody = match.groups()
-	output = ''
-	for func in objBody.split( '},' ):
-		output += re.sub(
-			r'^([^:]+):function\(([^)]*)\)',
-			r'function %s__\1(\2,*args)' % varName,
-			func
-		) + '\n'
-	return output
+    varName, objBody = match.groups()
+    output = ''
+    for func in objBody.split( '},' ):
+        output += re.sub(
+            r'^([^:]+):function\(([^)]*)\)',
+            r'function %s__\1(\2,*args)' % varName,
+            func
+        ) + '\n'
+    return output
 
 def _jsToPy(jsFunBody):
     pythonFunBody = re.sub(r'var ([^=]+)={(.*?)}};', _extractVarLocalFuns, jsFunBody)

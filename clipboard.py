@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2016-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,17 +19,14 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmcgui
-from kodi_six import xbmcgui
 import os
-import urllib
+from urllib.parse import unquote, quote, quote_plus
 
-import utils
 import favourite
 import parameters
-
+import utils
+import xbmcgui
 from utils import DISPLAYNAME
-
 
 FILENAME  = utils.FILENAME
 FOLDERCFG = utils.FOLDERCFG
@@ -104,7 +102,7 @@ def getFanart():
 
 
 def getDesc():
-    return  urllib.unquote(xbmcgui.Window(10000).getProperty('SF_DESCRIPTION'))
+    return  unquote(xbmcgui.Window(10000).getProperty('SF_DESCRIPTION'))
 
 
 def getMeta():
@@ -121,7 +119,7 @@ def _setPasteProperties(thumb='', fanart='', desc='', label=None, cmd=None, meta
 
     xbmcgui.Window(10000).setProperty('SF_THUMB',       thumb)
     xbmcgui.Window(10000).setProperty('SF_FANART',      fanart)
-    xbmcgui.Window(10000).setProperty('SF_DESCRIPTION', urllib.quote(desc))
+    xbmcgui.Window(10000).setProperty('SF_DESCRIPTION', quote(desc))
     xbmcgui.Window(10000).setProperty('SF_LABEL',       label)
     xbmcgui.Window(10000).setProperty('SF_META',        utils.convertDictToURL(meta))
 
@@ -210,7 +208,6 @@ def pasteFolder(dst, addonid):
 
 
 def pasteFolderLink(src, dst, folderName, addonid):
-    import urllib
     thumbnail, fanart = utils.getFolderThumb(src)
 
     folderConfig = os.path.join(src, FOLDERCFG)
@@ -225,7 +222,7 @@ def pasteFolderLink(src, dst, folderName, addonid):
     if path.startswith('/'):
         path = path[1:]
 
-    cmd = '%s?label=%s&mode=%d&folder=%s' % (addonid, folderName, utils._FOLDER, urllib.quote_plus(path))
+    cmd = '%s?label=%s&mode=%d&folder=%s' % (addonid, folderName, utils._FOLDER, quote_plus(path))
     cmd = '"%s"' % cmd  
     cmd = cmd.replace('+', '%20')
     cmd = 'ActivateWindow(%d,%s)' % (utils.getCurrentWindowId(), cmd) 

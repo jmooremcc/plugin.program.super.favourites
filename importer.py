@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2014-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,9 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-# import xbmcgui
-from kodi_six import xbmc, xbmcgui
+import xbmc, xbmcgui, xbmcvfs
 
 import zipfile
 import os, sys
@@ -34,7 +33,7 @@ CHANGELOG = None
 
 ADDON    = utils.ADDON
 ADDONID  = utils.ADDONID
-HOME     = xbmc.translatePath('special://userdata')
+HOME     = xbmcvfs.translatePath('special://userdata')
 ROOT     = utils.ROOT
 TITLE    = utils.TITLE
 
@@ -91,7 +90,7 @@ def _doImportFromRemote():
 
         import download
         import urllib
-        download.doDownload(urllib.quote_plus(location), urllib.quote_plus(file), urllib.quote_plus(TITLE), quiet=True)
+        download.doDownload(urllib.parse.quote_plus(location), urllib.parse.quote_plus(file), urllib.parse.quote_plus(TITLE), quiet=True)
 
         if os.path.exists(file): 
             success = extractAll(file, dp, location.replace('%20', ' '))
@@ -161,7 +160,7 @@ def doZipfile(outputFile, includeSettings=True):
 
     for root, dirs, files in os.walk(source):
 
-        if zip == None:
+        if zip is None:
             zip = zipfile.ZipFile(outputFile, 'w', zipfile.ZIP_DEFLATED)
 
         local = os.path.relpath(root, relroot).split(os.sep, 1)
@@ -188,12 +187,12 @@ def doZipfile(outputFile, includeSettings=True):
 
     if includeSettings:
         #TODO figure out why output_filename is used instead of outputFile
-        if zip == None:
+        if zip is None:
             zip = zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED)
 
         arcname  = 'settings.xml'
         filename = os.path.join(ADDON.getAddonInfo('profile'), arcname)
-        filename = xbmc.translatePath(filename) #has to be a real path
+        filename = xbmcvfs.translatePath(filename) #has to be a real path
 
         zip.write(filename, arcname)
 
@@ -276,10 +275,10 @@ def getFile(title, ext):
 
 
 def getFolder(title):
-    root   = xbmc.translatePath('special://userdata').split(os.sep, 1)[0] + os.sep
+    root   = xbmcvfs.translatePath('special://userdata').split(os.sep, 1)[0] + os.sep
     folder = xbmcgui.Dialog().browse(3, title, 'files', '', False, False, root)
 
-    return xbmc.translatePath(folder)
+    return xbmcvfs.translatePath(folder)
 
 
 if __name__ == '__main__':

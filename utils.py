@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2014-2015
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,10 +20,8 @@
 #
 
 
-# import xbmc
-# import xbmcaddon
-# import xbmcgui
-from kodi_six import xbmc, xbmcgui, xbmcaddon
+import xbmc, xbmcgui, xbmcaddon, xbmcvfs
+
 import os
 import re
 import datetime
@@ -87,7 +86,7 @@ SHOWPICTURE_MODE    = 5
 
 
 HOMESPECIAL = 'special://home/'
-HOMEFULL    = xbmc.translatePath(HOMESPECIAL)
+HOMEFULL    = xbmcvfs.translatePath(HOMESPECIAL)
 
 
 DEBUG = ADDON.getSetting('DEBUG') == 'true'
@@ -133,7 +132,7 @@ def outputDict(params, title=None):
 
     log('outputDict %s' % title)
 
-    if params == None:
+    if params is None:
         log('params == None')
     else:
         for key in params:
@@ -150,7 +149,7 @@ def DialogOK(line1, line2='', line3=''):
 
 def DialogYesNo(line1, line2='', line3='', noLabel=None, yesLabel=None):
     d = xbmcgui.Dialog()
-    if noLabel == None or yesLabel == None:
+    if noLabel is None or yesLabel is None:
         return d.yesno(TITLE + ' - ' + VERSION, line1, line2 , line3) == True
     else:
         return d.yesno(TITLE + ' - ' + VERSION, line1, line2 , line3, noLabel, yesLabel) == True
@@ -374,7 +373,7 @@ def VerifyKeymapHot():
 
 def WriteKeymap(start, end):
     filename = KEYMAP_HOT
-    cmd      = 'XBMC.RunScript(special://home/addons/plugin.program.super.favourites/hot.py)'
+    cmd      = 'RunScript(special://home/addons/plugin.program.super.favourites/hot.py)'
 
     dest = os.path.join('special://profile/keymaps', filename)
     cmd  = '<keymap><Global><keyboard><%s>%s</%s></keyboard></Global></keymap>'  % (start, cmd, end)
@@ -470,6 +469,7 @@ def GetSFFolder(text):
         return None
 
     xbmcgui.Window(10000).setProperty('SF_ADDTOSF_FOLDER', folder)
+    ADDON.setSetting('MENU_PREV_LOCN', 'true')
 
     return folder
 
@@ -480,8 +480,7 @@ def GetFolder(title, start=None):
     else:
         default = ROOT
 
-    sfile.makedirs(PROFILE) 
-
+    sfile.makedirs(PROFILE)
     folder = xbmcgui.Dialog().browse(3, title, 'files', '', False, False, default)
 
     if folder == default:
@@ -492,7 +491,7 @@ def GetFolder(title, start=None):
 
 
 def GetText(title, text='', hidden=False, allowEmpty=False):
-    if text == None:
+    if text is None:
         text = ''
 
     kb = xbmc.Keyboard(text.strip(), title)
@@ -607,7 +606,11 @@ def findAddon(item):
 
 
 def getSettingsLabel(addon):
-    label = xbmcaddon.Addon(addon).getAddonInfo('name')
+    try:
+        label = xbmcaddon.Addon(addon).getAddonInfo('name')
+    except:
+        return
+
     label = fix(label)
     label = label.strip()
 
@@ -798,7 +801,7 @@ def isFormatElement(element):
 
 
 def addPrefixToLabel(index, label, addPrefix=None):
-    if addPrefix == None:
+    if addPrefix is None:
         addPrefix = LABEL_NUMERIC
 
     if not addPrefix:
@@ -844,7 +847,7 @@ def addPrefixToLabel(index, label, addPrefix=None):
 
 
 def playItems(items, id=-1): 
-    if items == None or len(items) < 1:
+    if items is None or len(items) < 1:
         return
 
     pl = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
@@ -860,7 +863,8 @@ def playItems(items, id=-1):
         else:
             iconImage = ICON
 
-        liz   = xbmcgui.ListItem(title, iconImage=iconImage, thumbnailImage=iconImage)
+        liz = xbmcgui.ListItem(title)
+        liz.setArt({'icon': iconImage, 'thumb': iconImage})
         liz.setInfo(type='Video', infoLabels={'Title':title})
         pl.add(url, liz)
 
@@ -875,7 +879,7 @@ def playItems(items, id=-1):
 
 def inWidget():
     return True
-    return validWidget() < maxWidget()
+    # return validWidget() < maxWidget()
 
 
 def convertToHome(text):
@@ -910,34 +914,34 @@ def getFolderThumb(path, isXBMC=False):
         return thumb, fanart
 
     if isXBMC:
-        thumb  = thumb  if (thumb  != None) else 'DefaultFolder.png'
-        fanart = fanart if (fanart != None) else FANART
+        thumb  = thumb  if (thumb is not None) else 'DefaultFolder.png'
+        fanart = fanart if (fanart is not None) else FANART
         return thumb, fanart    
 
     if not INHERIT:
-        thumb  = thumb  if (thumb  != None) else ICON
-        fanart = fanart if (fanart != None) else FANART
+        thumb  = thumb  if (thumb is not None) else ICON
+        fanart = fanart if (fanart is not None) else FANART
         return thumb, fanart
 
     import locking
     if not locking.unlocked(path):
-        thumb  = thumb  if (thumb  != None) else ICON
-        fanart = fanart if (fanart != None) else FANART
+        thumb  = thumb  if (thumb is not None) else ICON
+        fanart = fanart if (fanart is not None) else FANART
         return thumb, fanart
 
     import favourite
     faves = favourite.getFavourites(os.path.join(path, FILENAME), 1)   
 
     if len(faves) < 1:
-        thumb  = thumb  if (thumb  != None) else ICON
-        fanart = fanart if (fanart != None) else FANART
+        thumb  = thumb  if (thumb is not None) else ICON
+        fanart = fanart if (fanart is not None) else FANART
         return thumb, fanart
 
     tFave = faves[0][1]
     fFave = favourite.getFanart(faves[0][2])
 
-    thumb  = thumb  if (thumb  != None) else tFave
-    fanart = fanart if (fanart != None) else fFave
+    thumb  = thumb  if (thumb is not None) else tFave
+    fanart = fanart if (fanart is not None) else fFave
 
     fanart = fanart if (fanart and len(fanart) > 0) else FANART
 
@@ -987,7 +991,7 @@ def get_params(path):
     for pair in pairs:
         split = pair.split('=')
         if len(split) > 1:
-            params[split[0]] = urllib.unquote_plus(split[1])
+            params[split[0]] = urllib.parse.unquote_plus(split[1])
 
     return params
 
@@ -1012,7 +1016,7 @@ def convertDictToURL(dict):
         if len(text) > 0:
             text += '&'
 
-        text += '%s=%s' % (label, urllib.quote_plus(value.replace('\n', '\\n')))
+        text += '%s=%s' % (label, urllib.parse.quote_plus(value.replace('\n', '\\n')))
 
     return text
 
@@ -1024,7 +1028,7 @@ def convertURLToDict(url):
     import urllib
     dict = {}
 
-    url = urllib.unquote_plus(url)
+    url = urllib.parse.unquote_plus(url)
 
     url = get_params(url)
 

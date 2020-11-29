@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2016-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,10 +21,13 @@
 
 import xbmc
 
+
+
 import menuUtils
 
 
 def add(silent=False):
+
     params = menuUtils.getCurrentParams()
     meta   = menuUtils.getCurrentMeta()
 
@@ -31,7 +35,7 @@ def add(silent=False):
     utils.outputDict(params, 'menu_addtofaves - params')
     utils.outputDict(meta,   'menu_addtofaves - meta')
 
-    if params == None:
+    if params is None:
         if not silent:
             import utils
             utils.DialogOK(utils.GETTEXT(30260))

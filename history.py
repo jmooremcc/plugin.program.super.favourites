@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2014-2015
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,8 +19,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-from kodi_six import xbmc
+import xbmc
+
 import os
 import urllib
 
@@ -67,11 +68,11 @@ def add(keyword, image, fanart, meta):
 
     newFave = []
     
-    cmd = 'fanart=%s&meta=%s' % (fanart, urllib.quote_plus(meta))
+    cmd = 'fanart=%s&meta=%s' % (fanart, urllib.parse.quote_plus(meta))
 
     newFave.append(keyword)
     newFave.append(image)
-    newFave.append('%s?sf_options=%s_options_sf' % (keyword, urllib.quote_plus(cmd)))
+    newFave.append('%s?sf_options=%s_options_sf' % (keyword, urllib.parse.quote_plus(cmd)))
 
     return favourite.addFave(FILENAME, newFave)
 

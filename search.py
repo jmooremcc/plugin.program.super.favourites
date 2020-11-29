@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2013-2014
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -21,8 +22,8 @@
 import utils
 import favourite
 import os
-# import xbmc
-from kodi_six import xbmc
+import xbmc
+
 
 ROOT     = utils.ROOT
 FILENAME = utils.FILENAME

@@ -1,6 +1,7 @@
 '''
     Simple XBMC Download Script
     Copyright (C) 2013 Sean Poyser (seanpoyser@gmail.com)
+    Portions Copyright (c) 2020 John Moore
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,23 +17,23 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import inspect
+import os
+import sys
 import urllib
 import urllib.request
 from urllib.request import urlopen
-# import xbmc
-# import xbmcgui
-# import xbmcplugin
-from kodi_six import xbmc, xbmcgui, xbmcplugin
-import os, sys
-import inspect
+from urllib.parse import quote_plus, unquote_plus
 
 import sfile
 import utils
+import xbmc
+import xbmcgui
 
 
 def getResponse(url, size, referer, agent, cookie):
     try:
-        #url = urllib.parse.quote_plus(url)
+        #url = quote_plus(url)
         req = urllib.request.Request(url)
 
         if len(referer) > 0:
@@ -79,12 +80,12 @@ def download(url, dest, title=None, referer=None, agent=None, cookie=None, quiet
         cookie  = ''
 
     #quote parameters
-    url     = urllib.parse.quote_plus(url)
-    dest    = urllib.parse.quote_plus(dest)
-    title   = urllib.parse.quote_plus(title)
-    referer = urllib.parse.quote_plus(referer)
-    agent   = urllib.parse.quote_plus(agent)
-    cookie  = urllib.parse.quote_plus(cookie)
+    url     = quote_plus(url)
+    dest    = quote_plus(dest)
+    title   = quote_plus(title)
+    referer = quote_plus(referer)
+    agent   = quote_plus(agent)
+    cookie  = quote_plus(cookie)
 
     script = inspect.getfile(inspect.currentframe())
     cmd    = 'RunScript(%s, %s, %s, %s, %s, %s, %s, %s)' % (script, url, dest, title, referer, agent, cookie, quiet)
@@ -113,12 +114,12 @@ def done(title, dest, downloaded):
 
 def doDownload(url, dest, title, referer='', agent='', cookie='', quiet=False):
     #unquote parameters
-    url     = urllib.unquote_plus(url).split('|')[0]
-    dest    = urllib.unquote_plus(dest)
-    title   = urllib.unquote_plus(title)
-    referer = urllib.unquote_plus(referer)
-    agent   = urllib.unquote_plus(agent)
-    cookie  = urllib.unquote_plus(cookie)
+    url     = unquote_plus(url).split('|')[0]
+    dest    = unquote_plus(dest)
+    title   = unquote_plus(title)
+    referer = unquote_plus(referer)
+    agent   = unquote_plus(agent)
+    cookie  = unquote_plus(cookie)
 
     file = dest.rsplit(os.sep, 1)[-1]
 

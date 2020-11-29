@@ -1,6 +1,7 @@
 
 #       Copyright (C) 2013-2014
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,11 +19,8 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-# import xbmcgui
-# import xbmcaddon
-from kodi_six import xbmc, xbmcgui, xbmcaddon
-import os
+import xbmcaddon
+import xbmcgui
 
 ACTION_BACK          = 92
 ACTION_PARENT_DIR    = 9
@@ -42,12 +40,13 @@ class ContextMenu(xbmcgui.WindowXMLDialog):
         
 
     def __init__(self, addonID, menu):
-        super(ContextMenu, self).__init__()
+        super(ContextMenu, self).__init__(None, None)
         self.menu = menu
 
         
     def onInit(self):
-    
+
+
         for i in range(4):
             self.getControl(5001+i).setVisible(False)
             
@@ -91,6 +90,7 @@ class ContextMenu(xbmcgui.WindowXMLDialog):
 
 
 def showMenu(addonID, menu):
+
     menu = ContextMenu(addonID, menu)
     menu.doModal()
     params = menu.params

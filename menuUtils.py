@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2016-
-#       Sean Poyser (seanpoyser@gmail.com)f
+#       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Mooref
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,9 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-# import xbmc
-# import xbmcgui
-from kodi_six import xbmc, xbmcgui
+import xbmc, xbmcgui, xbmcvfs
 
 import favourite
 import utils
@@ -31,7 +30,7 @@ ADDON   = utils.ADDON
 
 
 def getText(title, text=''):
-    if text == None:
+    if text is None:
         text = ''
 
     kb = xbmc.Keyboard(text.strip(), title)
@@ -100,7 +99,7 @@ def _getCmd(path, fanart, desc, window, filename, isFolder, meta, picture):
         if isFolder:
             #special paths fail to open - http://trac.kodi.tv/ticket/17333
             if path.startswith('special://'):
-                path = xbmc.translatePath(path)
+                path = xbmcvfs.translatePath(path)
             path = path.replace('%s%s' % (os.sep, os.sep), os.sep)
             path = path.replace(os.sep, '/')
             folder = path
@@ -129,7 +128,8 @@ def _getCmd(path, fanart, desc, window, filename, isFolder, meta, picture):
     #    cmd = 'PlayMedia("%s")' % filename
     elif path.lower().startswith('androidapp'):
         cmd = 'StartAndroidActivity("%s")' % path.replace('androidapp://sources/apps/', '', 1)
-    else:            
+    else:
+        utils.log('***else clause: cmd = \'PlayMedia("%s")\' % path')
         cmd = 'PlayMedia("%s")' % path
         cmd = favourite.updateSFOption(cmd, 'winID', window)
 
@@ -137,9 +137,10 @@ def _getCmd(path, fanart, desc, window, filename, isFolder, meta, picture):
     cmd = favourite.updateSFOption(cmd, 'desc', desc)
 
     if meta:
-        import urllib
+
+        from urllib.parse import quote_plus
         meta = utils.convertDictToURL(meta)
-        cmd  = favourite.updateSFOption(cmd, 'meta', urllib.quote_plus(meta))
+        cmd  = favourite.updateSFOption(cmd, 'meta', quote_plus(meta))
 
     if isFolder:
         cmd = cmd.replace('")', '",return)')
@@ -205,6 +206,7 @@ def addToFaves(params, meta=None):
         if cmd:
             copyFave(label, thumb, cmd)
     except Exception as e:
+
         utils.log('\n\nError in menuUtils.addToFaves : %s' % str(e))
         utils.outputDict(params)
 

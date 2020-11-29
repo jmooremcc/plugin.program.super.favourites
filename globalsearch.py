@@ -1,5 +1,6 @@
 #       Copyright (C) 2013-2014
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2020 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -26,15 +27,15 @@
 
 
 import os, sys
-# import xbmc, xbmcaddon
-from kodi_six import xbmc, xbmcaddon
+import xbmc, xbmcaddon, xbmcvfs
+
 
 ADDON        = xbmcaddon.Addon('script.globalsearch')
 ADDONID      = ADDON.getAddonInfo('id')
 ADDONVERSION = ADDON.getAddonInfo('version')
 LANGUAGE     = ADDON.getLocalizedString
 CWD          = ADDON.getAddonInfo('path').decode("utf-8")
-RESOURCE     = xbmc.translatePath( os.path.join( CWD, 'resources', 'lib' ).encode("utf-8") ).decode("utf-8")
+RESOURCE     = xbmcvfs.translatePath( os.path.join( CWD, 'resources', 'lib' ).encode("utf-8") ).decode("utf-8")
 
 sys.path.insert(0, RESOURCE)
 
@@ -44,9 +45,9 @@ def doSearch():
 		try:
 			param = sys.argv[1]
 			if param.startswith('searchstring:'):
-				import urllib
+				from urllib.parse import unquote_plus
 				searchstring = param.split(':', 1)[-1]
-				searchstring = urllib.unquote_plus(searchstring)
+				searchstring = unquote_plus(searchstring)
 				searchstring = searchstring.replace('\'', '')
 				searchstring = searchstring.replace('"',  '')
 		except:
