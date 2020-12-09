@@ -21,6 +21,7 @@
 
 import xbmc
 import xbmcgui
+import xbmcplugin
 import xbmcaddon
 
 import favourite
@@ -113,7 +114,7 @@ def playCommand(originalCmd, contentMode=False):
                 return playlist.play(cmd)      
 
         if 'ActivateWindow' in cmd:
-            return activateWindowCommand(cmd) 
+            return activateWindowCommand(cmd)
 
         if 'PlayMedia' in cmd:
             return playMedia(originalCmd)
@@ -157,6 +158,8 @@ def activateWindowCommand(cmd):
     if plugin and not pluginArgs is None:
         try:
             if "2Fcategories" in cmd:
+                xbmc.executebuiltin(cmd)
+            elif 'mode=' in plugin.lower():
                 xbmc.executebuiltin(cmd)
             else:
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)

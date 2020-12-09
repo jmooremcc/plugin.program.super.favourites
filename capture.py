@@ -314,8 +314,8 @@ def doMenu(mode):
             localAddon = utils.findAddon(path)           
             if localAddon:
                 name = utils.getSettingsLabel(localAddon)
-                if name is None:
-                    return
+                # if name is None:
+                #     return
 
                 menu.append((name, _SETTINGS))
        

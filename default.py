@@ -2101,10 +2101,10 @@ def hasIMDBRecommendations(imdb):
 
 def getMetaGrabber():
     if METARECOMMEND:
-        # try:
-        #     from metahandler import metahandlers
-        #     return metahandlers.MetaData(tmdb_api_key=TMDB_API_KEY)
-        # except:
+        try:
+            from metahandler import metahandlers
+            return metahandlers.MetaData(tmdb_api_key=TMDB_API_KEY)
+        except:
             pass
     return None
 
@@ -2712,7 +2712,6 @@ def superSearch(keyword='', image=SEARCH, fanart=FANART, imdb='', meta={}):
 
 
 def playCommand(originalCmd):
-
     player.playCommand(originalCmd, contentMode)
 
 
@@ -2859,8 +2858,6 @@ def addDir(label, mode, index=-1, path = '', cmd = '', thumbnail='', isFolder=Tr
     for m in _menu:
         menu.append((m[0], m[1].replace('/?', '/?index=%d&' % nItem)))
     nItem += 1
-
-    # import web_pdb;web_pdb.set_trace()
     liz.addContextMenuItems(menu, replaceItems=True)
 
     xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=isFolder, totalItems=totalItems)
@@ -2869,7 +2866,6 @@ def addDir(label, mode, index=-1, path = '', cmd = '', thumbnail='', isFolder=Tr
 ## --------------------------------------------------------------------------------------------------------------------------   
 
 params = utils.get_params(sys.argv[2])
-
 
 doRefresh     = False
 doEnd         = True
