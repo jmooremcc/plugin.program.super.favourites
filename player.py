@@ -158,6 +158,8 @@ def activateWindowCommand(cmd):
         try:
             if "2Fcategories" in cmd:
                 xbmc.executebuiltin(cmd)
+            elif 'mode=' in plugin.lower():
+                xbmc.executebuiltin(cmd)
             else:
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
         except Exception as e:

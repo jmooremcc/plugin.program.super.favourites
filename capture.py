@@ -23,7 +23,7 @@
 import xbmc
 import xbmcgui
 import xbmcaddon
-import os
+import os, sys
 
 
 _STD_MENU     = 0

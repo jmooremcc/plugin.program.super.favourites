@@ -23,7 +23,7 @@ import xbmc
 import xbmcaddon
 import xbmcplugin
 import xbmcgui
-import os
+import os, sys
 
 
 import urllib
