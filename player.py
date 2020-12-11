@@ -22,7 +22,6 @@ import xbmc
 import xbmcgui
 import xbmcaddon
 
-
 import favourite
 import utils
 
@@ -113,7 +112,7 @@ def playCommand(originalCmd, contentMode=False):
                 return playlist.play(cmd)      
 
         if 'ActivateWindow' in cmd:
-            return activateWindowCommand(cmd) 
+            return activateWindowCommand(cmd)
 
         if 'PlayMedia' in cmd:
             return playMedia(originalCmd)
@@ -166,7 +165,10 @@ def activateWindowCommand(cmd):
             utils.log(str(e))
 
     else: # call plugin without args
-        xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
+        if ",return)" in cmd:
+            xbmc.executebuiltin(cmd)
+        else:
+            xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
 
 
 def playMedia(original):
