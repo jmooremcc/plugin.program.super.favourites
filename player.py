@@ -167,7 +167,11 @@ def activateWindowCommand(cmd):
             utils.log(str(e))
 
     else: # call plugin without args
-        xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
+        if ",return)" in cmd:
+            xbmc.executebuiltin(cmd)
+        else:
+            xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
+
 
 
 def playMedia(original):

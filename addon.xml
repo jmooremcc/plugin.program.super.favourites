@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.program.super.favourites" name="Super Favourites" version="2.0.2" provider-name="jmooremcc">
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="2.0.3" provider-name="jmooremcc">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
     <import addon="script.module.metahandler" optional="true" />
@@ -32,6 +32,9 @@
     </assets>
 
     <news>
+2.0.3: 10 December 2020
+      - More Fixes for Network Folder Failure to Launch
+
 2.0.0: 29 November 2020
       - Matrix Version
 
