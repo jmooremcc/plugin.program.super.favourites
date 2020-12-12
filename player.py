@@ -165,12 +165,8 @@ def activateWindowCommand(cmd):
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
         except Exception as e:
             utils.log(str(e))
-
-    else: # call plugin without args
-        if ",return)" in cmd:
-            xbmc.executebuiltin(cmd)
-        else:
-            xbmc.executebuiltin(cmd+',"refresh"') # good for single plugin launch
+    else:
+        xbmc.executebuiltin(cmd)
 
 
 
