@@ -1,6 +1,7 @@
 #
 #       Copyright (C) 2014-
 #       Sean Poyser (seanpoyser@gmail.com)
+#       Portions Copyright (c) 2021 John Moore
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,8 +19,10 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
+import sys, os
 import xbmc
 import xbmcgui
+import xbmcplugin
 import xbmcaddon
 
 import favourite
@@ -127,6 +130,7 @@ def playCommand(originalCmd, contentMode=False):
 
 
 def activateWindowCommand(cmd):
+    property = 'SF_BROWSER_PATH'
     cmds = cmd.split(',', 1)
 
     #special case for filemanager
@@ -163,8 +167,23 @@ def activateWindowCommand(cmd):
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
         except Exception as e:
             utils.log(str(e))
+
+        xbmcgui.Window(10000).clearProperty(property)
     else:
-        xbmc.executebuiltin(cmd)
+        if plugin:
+            prop = xbmcgui.Window(10000).getProperty(property)
+            path = plugin.split(',', 1)[0]
+            if not prop:
+                # xbmc.executebuiltin('Dialog.Close(busydialog)')
+                xbmcgui.Window(10000).setProperty(property, path)
+                xbmc.executebuiltin('Container.Update(%s)' % path)
+                xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+            else:
+                # import web_pdb; web_pdb.set_trace()
+                xbmcgui.Window(10000).clearProperty(property)
+        else:
+            xbmc.executebuiltin(cmd)
+            xbmcgui.Window(10000).clearProperty(property)
 
 
 
