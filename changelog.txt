@@ -1,6 +1,9 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.0.7: 17 February 2021[/COLOR]
+    - Fixed remote folder access via another plugin
+
 [COLOR chartreuse]2.0.5: 12 December 2020[/COLOR]
     - More Fixes for Network Folder Failure to Launch
 
