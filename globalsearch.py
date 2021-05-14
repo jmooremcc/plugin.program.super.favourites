@@ -34,8 +34,8 @@ ADDON        = xbmcaddon.Addon('script.globalsearch')
 ADDONID      = ADDON.getAddonInfo('id')
 ADDONVERSION = ADDON.getAddonInfo('version')
 LANGUAGE     = ADDON.getLocalizedString
-CWD          = ADDON.getAddonInfo('path').decode("utf-8")
-RESOURCE     = xbmcvfs.translatePath( os.path.join( CWD, 'resources', 'lib' ).encode("utf-8") ).decode("utf-8")
+CWD          = ADDON.getAddonInfo('path').decode("latin1")
+RESOURCE     = xbmcvfs.translatePath( os.path.join( CWD, 'resources', 'lib' ).encode("latin1") ).decode("latin1")
 
 sys.path.insert(0, RESOURCE)
 

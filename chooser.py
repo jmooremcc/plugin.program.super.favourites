@@ -138,7 +138,7 @@ class Main:
 
                 
     def getFaves(self):
-        file  = os.path.join(self.FULLPATH, FILENAME).decode('utf-8')        
+        file  = os.path.join(self.FULLPATH, FILENAME).decode('latin1')
         faves = []        
 
         index = 0

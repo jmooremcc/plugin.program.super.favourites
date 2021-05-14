@@ -254,7 +254,7 @@ def getMovieCast():
         return []
 
     query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetMovieDetails", "params": {"movieid": %s, "properties": ["cast"]}, "id": 1 }' % dbid)
-    query = str(query, 'utf-8', errors='ignore')
+    query = str(query, 'latin1', errors='ignore')
 
     j = json.loads(query)
 
@@ -271,7 +271,7 @@ def getTVShowCast(dbid=None):
         return []
 
     query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetTVShowDetails", "params": {"tvshowid": %s, "properties": ["cast"]}, "id": 1 }' % dbid)
-    query = str(query, 'utf-8', errors='ignore')
+    query = str(query, 'latin1', errors='ignore')
 
     j = json.loads(query)
 
@@ -288,14 +288,14 @@ def getSeasonCast():
         return []
 
     query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetSeasonDetails", "params": {"seasonid": %s, "properties": ["tvshowid"]}, "id": 1 }' % dbid)
-    query = str(query, 'utf-8', errors='ignore')
+    query = str(query, 'latin1', errors='ignore')
 
     j = json.loads(query)
 
     if 'result' not in j: #usually caused by the 'All Seasons' item
         dbid  = str(int(dbid) + 2) #this seems to give Season 1 which will suffice
         query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetSeasonDetails", "params": {"seasonid": %s, "properties": ["tvshowid"]}, "id": 1 }' % dbid)
-        query = str(query, 'utf-8', errors='ignore')
+        query = str(query, 'latin1', errors='ignore')
 
         j = json.loads(query)
 
@@ -317,7 +317,7 @@ def getEpisodeCast():
         return []
 
     query = xbmc.executeJSONRPC('{ "jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodeDetails", "params": {"episodeid": %s, "properties": ["cast"]}, "id": 1 }' % dbid)
-    query = str(query, 'utf-8', errors='ignore')
+    query = str(query, 'latin1', errors='ignore')
 
     j = json.loads(query)
 
