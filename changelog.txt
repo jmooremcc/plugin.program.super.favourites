@@ -1,6 +1,10 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.0.9: 15 May 2021[/COLOR]
+      - Fixed bug in Player.def activateWindowCommand(cmd) that was messing up the ability
+        to return from child direrctories
+
 [COLOR chartreuse]2.0.8: 14 May 2021[/COLOR]
       - Fixed various incompatibilities with latest version of Matrix involving decode('utf-8')
         that caused crashes.
