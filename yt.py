@@ -263,7 +263,7 @@ def FetchPage(url):
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
     req.add_header('Referer',    'http://www.youtube.com/')
 
-    return urlopen(req).read().decode("latin1")
+    return urlopen(req).read().decode("utf-8")
 
 
 def replaceHTMLCodes(txt):
@@ -407,7 +407,7 @@ def DecryptSignatureNew(s, playerUrl):
             
     try:
         playerData = urlopen(request).read()
-        playerData = playerData.decode('latin1', 'ignore')
+        playerData = playerData.decode('utf-8', 'ignore')
     except Exception as e:
         #print str(e)
         print('Failed to decode playerData')

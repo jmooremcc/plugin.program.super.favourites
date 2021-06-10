@@ -40,7 +40,10 @@ RUNPLUGIN_MODE      = utils.RUNPLUGIN_MODE
 ACTION_MODE         = utils.ACTION_MODE
 SHOWPICTURE_MODE    = utils.SHOWPICTURE_MODE
 
-PLAY_PLAYLISTS = ADDON.getSetting('PLAY_PLAYLISTS') == 'true'    
+PLAY_PLAYLISTS = ADDON.getSetting('PLAY_PLAYLISTS') == 'true'
+ACTION_PARENT_DIR = 9
+ACTION_PREVIOUS_MENU    =   10
+
 
 
 def getParentCommand(cmd):
@@ -130,6 +133,7 @@ def playCommand(originalCmd, contentMode=False):
 
 
 def activateWindowCommand(cmd):
+    utils.log("***activateWindowCommand called")
     property = 'SF_BROWSER_PATH'
     cmds = cmd.split(',', 1)
 
@@ -160,12 +164,15 @@ def activateWindowCommand(cmd):
     if plugin and not pluginArgs is None:
         try:
             if "2Fcategories" in cmd:
+                utils.log("xbmc.executebuiltin(cmd)")
                 xbmc.executebuiltin(cmd)
             elif 'mode=' in plugin.lower():
+                utils.log("xbmc.executebuiltin(cmd)")
                 xbmc.executebuiltin(cmd)
             # elif pluginArgs:
             #     xbmc.executebuiltin(cmd)
             else:
+                utils.log("xbmc.executebuiltin('RunPlugin(%s)' % plugin)")
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
         except Exception as e:
             utils.log(str(e))

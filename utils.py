@@ -1006,7 +1006,7 @@ def convertDictToURL(dict):
             value = str(value)
         except Exception as e:
             try:    
-                value = value.encode('latin1')
+                value = value.encode('utf-8') 
             except Exception as e:
                 value = ''
             
