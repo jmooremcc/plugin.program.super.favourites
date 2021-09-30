@@ -1,7 +1,7 @@
 # Kodi Media Center language file
 # Addon Name: Super Favouritos
 # Addon id: plugin.program.super.favourites
-# Addon Provider: jmooremcc
+# Addon Provider: jmooremcc, spoyser
 msgid ""
 msgstr ""
 "Project-Id-Version: Kodi Addons\n"

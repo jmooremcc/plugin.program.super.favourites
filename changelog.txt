@@ -1,6 +1,10 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.1.0: 9 October 2021[/COLOR]
+      - Added Spanish Translation contributed by populc
+      - Fixed issue in player module
+
 [COLOR chartreuse]2.0.11: 26 August 2021[/COLOR]
       - Fixed bug in download module that prevented videos from being downloaded
 
