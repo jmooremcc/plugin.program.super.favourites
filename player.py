@@ -19,7 +19,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 #
 
-import sys, os
+import sys, os, time
 import xbmc
 import xbmcgui
 import xbmcplugin
@@ -150,10 +150,11 @@ def activateWindowCommand(cmd):
         activate = cmds[0]
     else:
         activate = cmds[0]+',return)'
-        plugin   = cmds[1][:-1]
-        try:
-            pluginArgs = plugin.split('/?',1)[1]
-        except: pass
+        if "plugin://"in cmds[1][:-1]:
+            plugin   = cmds[1][:-1]
+            try:
+                pluginArgs = plugin.split('/?',1)[1]
+            except: pass
 
     #check if it is a different window and if so activate it
     id = str(xbmcgui.getCurrentWindowId())
@@ -162,6 +163,7 @@ def activateWindowCommand(cmd):
         xbmc.executebuiltin(activate)
 
     if plugin and not pluginArgs is None:
+        utils.log("Plugin With Args Called...")
         try:
             if "2Fcategories" in cmd:
                 utils.log("xbmc.executebuiltin(cmd)")
@@ -179,20 +181,48 @@ def activateWindowCommand(cmd):
 
         xbmcgui.Window(10000).clearProperty(property)
     else:
+        folderpath = xbmc.getInfoLabel('Container.FolderPath')
+        utils.log(f"***folder path: {folderpath}")
+        prop = xbmcgui.Window(10000).getProperty(property)
+        # import web_pdb; web_pdb.set_trace()
+
         if plugin:
-            prop = xbmcgui.Window(10000).getProperty(property)
+            utils.log("Plugin Without Args Called...")
+            # utils.log("Calling RungPlugin...")
+            # xbmc.executebuiltin('RunPlugin(%s)' % plugin)
             path = plugin.split(',', 1)[0]
+
             if not prop:
+                import web_pdb; web_pdb.set_trace()
                 # xbmc.executebuiltin('Dialog.Close(busydialog)')
-                xbmcgui.Window(10000).setProperty(property, path)
+                xbmcgui.Window(10000).setProperty(property, folderpath)
+                # xbmcgui.executebuiltin(f"ActivateWindow(10025, {path}, return)")
+                xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=True)
                 xbmc.executebuiltin('Container.Update(%s)' % path)
-                xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
             else:
-                # import web_pdb; web_pdb.set_trace()
+                import web_pdb; web_pdb.set_trace()
                 xbmcgui.Window(10000).clearProperty(property)
-        else:
-            xbmc.executebuiltin(cmd)
-            xbmcgui.Window(10000).clearProperty(property)
+                # path = prop.split(',', 1)[0]
+                # xbmc.executebuiltin('Container.Update(%s)' % path)
+                # xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+
+                # xbmcgui.Action(ACTION_PARENT_DIR)
+                # xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+        else: # Folder or Directory Resource
+            # import web_pdb; web_pdb.set_trace()
+            path = os.path.normpath(cmd.split(',', 2)[1])
+            utils.log("Directory Resource Called...")
+
+            if not prop:
+                utils.resetTotal_time()
+                xbmcgui.Window(10000).setProperty(property, path)
+                xbmc.executebuiltin(f"Container.Update({path})")
+                xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=True)
+            else:
+                xbmcgui.Window(10000).clearProperty(property)
+                xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
+                xbmc.executebuiltin("Action(Back, 10025)")
+
 
 
 

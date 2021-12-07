@@ -1,6 +1,11 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.2.0 December 2021[/COLOR]
+      - Fixed Play From Here functionality
+      - Fixed handling of local folders so that back button now works correctly
+      - Added threading decorator to utils
+
 [COLOR chartreuse]2.1.0: 9 October 2021[/COLOR]
       - Added Spanish Translation contributed by populc
       - Fixed issue in player module

@@ -134,6 +134,7 @@ _PASTEFOLDER           = 5000
 _IEXPLORE              = 5100
 _PLAY_FILE             = 5200
 _PLAY_FOLDER           = 5300
+_PLAY_FOLDER_FROM_HERE = 5350
 _PLAY_SUPER_FOLDER     = 5400
 _PLAY_SUPER_FOLDER_EXT = 5450
 
@@ -739,6 +740,23 @@ def playSuperFolder(path, id):
     utils.log(items)
 
     utils.playItems(items, id)
+
+def playFolderFromHere(path):
+    folder = os.path.dirname(path)
+    filename = os.path.basename(path)
+
+    files = utils.parseFolder(folder, subfolders=False)
+
+    items = []
+    seenStartfile = False
+
+    for fname, fpath, isFile in files:
+        if seenStartfile and isFile:
+            items.append([fname, fpath])
+        elif not seenStartfile and filename in fname:
+            seenStartfile = True
+
+    utils.playItems(items)
 
 
 def playFolder(folder):
@@ -2860,6 +2878,9 @@ def addDir(label, mode, index=-1, path = '', cmd = '', thumbnail='', isFolder=Tr
     nItem += 1
     liz.addContextMenuItems(menu, replaceItems=True)
 
+    if totalItems == 0:
+        totalItems = nItem
+
     xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz, isFolder=isFolder, totalItems=totalItems)
 
 
@@ -3377,6 +3398,10 @@ elif mode == _PLAY_FILE:
 
 elif mode == _PLAY_FOLDER:
     playFolder(path)
+
+
+elif mode == _PLAY_FOLDER_FROM_HERE:
+    playFolderFromHere(path)
 
 
 elif mode == _PLAY_SUPER_FOLDER_EXT:

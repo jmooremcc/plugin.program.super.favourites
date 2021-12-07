@@ -22,10 +22,34 @@
 
 import xbmc, xbmcgui, xbmcaddon, xbmcvfs
 
+import sys
 import os
 import re
 import datetime
+import time
+from threading import Thread
+import shlex, subprocess
+from urllib.parse import quote_plus, unquote_plus, unquote, quote
+from shutil import which
 import sfile
+
+
+_PLAY_FILE = 5200
+_PLAY_FOLDER_FROM_HERE = 5350
+_PLAY_FOLDER = 5300
+_COPY_PLAY_TO_SF_ITEM = 3800
+_COPY_PLAY_TO_SF = 3700
+
+
+def TS_decorator(func):
+    def stub(*args, **kwargs):
+        func(*args, **kwargs)
+
+    def hook(*args,**kwargs):
+        threadname="Thread-{}".format(func.__name__)
+        Thread(target=stub, name=threadname, args=args).start()
+
+    return hook
 
 
 def GetXBMCVersion():
