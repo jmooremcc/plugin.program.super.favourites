@@ -1,6 +1,9 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.2.1 February 2022[/COLOR]
+      - Minor Bug Fix
+
 [COLOR chartreuse]2.2.0 December 2021[/COLOR]
       - Fixed Play From Here functionality
       - Fixed handling of local folders so that back button now works correctly

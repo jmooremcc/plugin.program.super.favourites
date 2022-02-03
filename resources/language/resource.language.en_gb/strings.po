@@ -1256,3 +1256,6 @@ msgctxt "#35046"
 msgid "          Show on Super Favourites context menu"
 msgstr ""
 
+msgctxt "#35047"
+msgid "          Download Cancelled"
+msgstr ""

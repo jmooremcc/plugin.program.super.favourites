@@ -171,8 +171,6 @@ def activateWindowCommand(cmd):
             elif 'mode=' in plugin.lower():
                 utils.log("xbmc.executebuiltin(cmd)")
                 xbmc.executebuiltin(cmd)
-            # elif pluginArgs:
-            #     xbmc.executebuiltin(cmd)
             else:
                 utils.log("xbmc.executebuiltin('RunPlugin(%s)' % plugin)")
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
@@ -184,37 +182,22 @@ def activateWindowCommand(cmd):
         folderpath = xbmc.getInfoLabel('Container.FolderPath')
         utils.log(f"***folder path: {folderpath}")
         prop = xbmcgui.Window(10000).getProperty(property)
-        # import web_pdb; web_pdb.set_trace()
 
         if plugin:
             utils.log("Plugin Without Args Called...")
-            # utils.log("Calling RungPlugin...")
-            # xbmc.executebuiltin('RunPlugin(%s)' % plugin)
             path = plugin.split(',', 1)[0]
 
             if not prop:
-                import web_pdb; web_pdb.set_trace()
-                # xbmc.executebuiltin('Dialog.Close(busydialog)')
                 xbmcgui.Window(10000).setProperty(property, folderpath)
-                # xbmcgui.executebuiltin(f"ActivateWindow(10025, {path}, return)")
                 xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=True)
                 xbmc.executebuiltin('Container.Update(%s)' % path)
             else:
-                import web_pdb; web_pdb.set_trace()
                 xbmcgui.Window(10000).clearProperty(property)
-                # path = prop.split(',', 1)[0]
-                # xbmc.executebuiltin('Container.Update(%s)' % path)
-                # xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
-
-                # xbmcgui.Action(ACTION_PARENT_DIR)
-                # xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=False)
         else: # Folder or Directory Resource
-            # import web_pdb; web_pdb.set_trace()
             path = os.path.normpath(cmd.split(',', 2)[1])
             utils.log("Directory Resource Called...")
 
             if not prop:
-                utils.resetTotal_time()
                 xbmcgui.Window(10000).setProperty(property, path)
                 xbmc.executebuiltin(f"Container.Update({path})")
                 xbmcplugin.endOfDirectory(int(sys.argv[1]), cacheToDisc=True)
