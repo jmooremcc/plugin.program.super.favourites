@@ -804,9 +804,9 @@ def iExplore(path=None):
         label, index = utils.addPrefixToLabel(index, label)
 
         menu = []
-            
+
         if isFile:
-            menu.append((GETTEXT(30230), 'RunPlugin(%s?mode=%d&path=%s)' % (sys.argv[0], _PLAY_FOLDER, quote_plus(url))))
+            menu.append((GETTEXT(30230), 'RunPlugin(%s?mode=%d&path=%s)' % (sys.argv[0], _PLAY_FOLDER_FROM_HERE, quote_plus(url))))
             menu.append((GETTEXT(30047), 'RunPlugin(%s?mode=%d&path=%s&label=%s&thumb=%s)' % (sys.argv[0], _COPY_PLAY_TO_SF_ITEM, quote_plus(url), quote_plus(title), quote_plus(file))))
             addDir(label, _PLAY_FILE, path=url, thumbnail=file, isFolder=False, menu=menu, infolabels={'plot':GETTEXT(30229) % title})
         else:
