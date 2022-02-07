@@ -928,8 +928,8 @@ def getColour():
 
 
     #option = menus.selectMenu(GETTEXT(30086), menu)
-                 
-    if option < 0:
+
+    if type(option)== int and option < 0:
         return None
 
     return option

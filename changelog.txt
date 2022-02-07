@@ -1,6 +1,10 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.2.3 February 2022[/COLOR]
+      - Fix folder lock
+      - Fix name colorization
+
 [COLOR chartreuse]2.2.1 February 2022[/COLOR]
       - Minor Bug Fix
 

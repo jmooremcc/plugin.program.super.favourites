@@ -168,7 +168,7 @@ def outputDict(params, title=None):
 
 def DialogOK(line1, line2='', line3=''):
     d = xbmcgui.Dialog()
-    d.ok(TITLE + ' - ' + VERSION, line1, line2 , line3)
+    d.ok(TITLE + ' - ' + VERSION, line1)
 
 
 def DialogYesNo(line1, line2='', line3='', noLabel=None, yesLabel=None):
@@ -192,13 +192,13 @@ def generateMD5(text):
 
     try:
         import hashlib        
-        return hashlib.md5(text.lower()).hexdigest()
+        return hashlib.md5(text.lower().encode()).hexdigest()
     except:
         pass
 
     try:
         import md5
-        return md5.new(text).hexdigest()
+        return md5.new(text.encode()).hexdigest()
     except:
         pass
         
