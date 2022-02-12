@@ -171,6 +171,9 @@ def activateWindowCommand(cmd):
             elif 'mode=' in plugin.lower():
                 utils.log("xbmc.executebuiltin(cmd)")
                 xbmc.executebuiltin(cmd)
+            elif 'action=' in plugin.lower():
+                utils.log("xbmc.executebuiltin(cmd)")
+                xbmc.executebuiltin(cmd)
             else:
                 utils.log("xbmc.executebuiltin('RunPlugin(%s)' % plugin)")
                 xbmc.executebuiltin('RunPlugin(%s)' % plugin)
