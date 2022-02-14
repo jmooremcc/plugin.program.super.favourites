@@ -1,6 +1,9 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.2.5 February 2022[/COLOR]
+      - Generic Fix for activateWindowCommand
+
 [COLOR chartreuse]2.2.4 February 2022[/COLOR]
       - Fix URL Playback
 

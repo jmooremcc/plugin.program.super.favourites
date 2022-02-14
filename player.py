@@ -165,18 +165,8 @@ def activateWindowCommand(cmd):
     if plugin and not pluginArgs is None:
         utils.log("Plugin With Args Called...")
         try:
-            if "2Fcategories" in cmd:
-                utils.log("xbmc.executebuiltin(cmd)")
-                xbmc.executebuiltin(cmd)
-            elif 'mode=' in plugin.lower():
-                utils.log("xbmc.executebuiltin(cmd)")
-                xbmc.executebuiltin(cmd)
-            elif 'action=' in plugin.lower():
-                utils.log("xbmc.executebuiltin(cmd)")
-                xbmc.executebuiltin(cmd)
-            else:
-                utils.log("xbmc.executebuiltin('RunPlugin(%s)' % plugin)")
-                xbmc.executebuiltin('RunPlugin(%s)' % plugin)
+            utils.log("xbmc.executebuiltin(cmd)")
+            xbmc.executebuiltin(cmd)
         except Exception as e:
             utils.log(str(e))
 
