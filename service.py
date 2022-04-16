@@ -26,6 +26,7 @@ import xbmcgui
 
 import os
 
+DEBUG = utils.DEBUG
 
 utils.safeCall(utils.VerifyZipFiles)
 utils.safeCall(utils.VerifyKeymaps)
@@ -70,13 +71,14 @@ class MyMonitor(xbmc.Monitor):
         self.std_addtofaves = utils.ADDON.getSetting('ADDTOFAVES_ON_STD') == 'true'
         self.std_download   = utils.ADDON.getSetting('DOWNLOAD_ON_STD')   == 'true'
 
-        #print "*************************"
-        #print "CONTEXT_STD       = %s" % self.std_context
-        #print type(self.std_context)
-        #print "ADDTOFAVES_ON_STD = %s" % self.std_addtofaves
-        #print type(self.std_addtofaves)
-        #print "DOWNLOAD_ON_STD   = %s" % self.std_download
-        #print type(self.std_download)
+        if DEBUG:
+            print("*************************")
+            print("CONTEXT_STD       = %s" % self.std_context)
+            print(type(self.std_context))
+            print("ADDTOFAVES_ON_STD = %s" % self.std_addtofaves)
+            print(type(self.std_addtofaves))
+            print("DOWNLOAD_ON_STD   = %s" % self.std_download)
+            print(type(self.std_download))
 
         #useage in addon.xml : <visible>!IsEmpty(Window(Home).Property(SF_STD_CONTEXTMENU_ENABLED))</visible>
 
@@ -100,6 +102,12 @@ class MyMonitor(xbmc.Monitor):
         else:
             xbmcgui.Window(HOME).clearProperty('SF_STD_DOWNLOAD_ENABLED')
 
+
+        if DEBUG:
+            print("*************************")
+            print(f"SF_STD_CONTEXTMENU_ENABLED:{xbmcgui.Window(HOME).getProperty('SF_STD_CONTEXTMENU_ENABLED')}")
+            print(f"SF_STD_ADDTOFAVES_ENABLED:{xbmcgui.Window(HOME).getProperty('SF_STD_ADDTOFAVES_ENABLED')}")
+            print(f"SF_STD_DOWNLOAD_ENABLED:{xbmcgui.Window(HOME).getProperty('SF_STD_DOWNLOAD_ENABLED')}")
 
 monitor = MyMonitor()
 monitor.waitForAbort()

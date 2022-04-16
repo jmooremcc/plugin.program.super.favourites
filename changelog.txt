@@ -1,6 +1,10 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.2.6 April 2022[/COLOR]
+      - Fix context menu settings bug
+      - Fix more issues with activateWindowCommand
+
 [COLOR chartreuse]2.2.5 February 2022[/COLOR]
       - Generic Fix for activateWindowCommand
 
