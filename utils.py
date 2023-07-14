@@ -176,12 +176,12 @@ def DialogYesNo(line1, line2='', line3='', noLabel=None, yesLabel=None):
     if noLabel is None or yesLabel is None:
         return d.yesno(TITLE + ' - ' + VERSION, line1, line2 , line3) == True
     else:
-        return d.yesno(TITLE + ' - ' + VERSION, line1, line2 , line3, noLabel, yesLabel) == True
+        return d.yesno(TITLE + ' - ' + VERSION, f"{line1}\n{line2}\n{line3}", nolabel=noLabel, yeslabel=yesLabel) == True
 
 
 def Progress(title, line1 = '', line2 = '', line3 = ''):
     dp = xbmcgui.DialogProgress()
-    dp.create(title, line1, line2, line3)
+    dp.create(title, f"{line1}\n{line2}\n{line3}")
     dp.update(0)
     return dp
 
@@ -933,6 +933,8 @@ def getFolderThumb(path, isXBMC=False):
     cfg    = parameters.getParams(cfg)
     thumb  = parameters.getParam('ICON',   cfg)
     fanart = parameters.getParam('FANART', cfg)
+    Log(f"\n***path:{path}\nThumb:{thumb}\nFanart:{fanart}\n")
+
 
     if thumb and fanart:
         return thumb, fanart

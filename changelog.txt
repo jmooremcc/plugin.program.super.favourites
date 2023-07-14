@@ -1,6 +1,13 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+COLOR chartreuse]2.3.0 July 2023[/COLOR]
+      - Added imagecache module as part of solution to implement saving icons and fanart during export/import
+      - Modified importer module to utilize imagecache
+      - Modified default module to utilize imagecache at startup
+      - Fixed miscellaneous bugs related to xbmc function calls
+
+
 [COLOR chartreuse]2.2.6 April 2022[/COLOR]
       - Fix context menu settings bug
       - Fix more issues with activateWindowCommand

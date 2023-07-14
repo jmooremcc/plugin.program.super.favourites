@@ -126,7 +126,7 @@ def doDownload(url, dest, title, referer='', agent='', cookie='', quiet=False):
     resp, error = getResponse(url, 0, referer, agent, cookie)
 
     if not resp:
-        xbmcgui.Dialog().ok(title, dest, 'Download failed', error)
+        xbmcgui.Dialog().ok(title, f"{dest}\nDownload failed\n{error}")
         return
 
     try:    content = int(resp.headers['Content-Length'])
@@ -142,7 +142,7 @@ def doDownload(url, dest, title, referer='', agent='', cookie='', quiet=False):
         utils.log('Download is resumable')
 
     if content < 1:
-        xbmcgui.Dialog().ok(title, file, 'Unknown filesize', 'Unable to download')
+        xbmcgui.Dialog().ok(title, f"{file}\nUnknown filesize\nUnable to download")
         return
 
     size = 1024 * 1024

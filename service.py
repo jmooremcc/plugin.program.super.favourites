@@ -26,7 +26,7 @@ import xbmcgui
 
 import os
 
-DEBUG = utils.DEBUG
+LCLDEBUG = True
 
 utils.safeCall(utils.VerifyZipFiles)
 utils.safeCall(utils.VerifyKeymaps)
@@ -71,7 +71,7 @@ class MyMonitor(xbmc.Monitor):
         self.std_addtofaves = utils.ADDON.getSetting('ADDTOFAVES_ON_STD') == 'true'
         self.std_download   = utils.ADDON.getSetting('DOWNLOAD_ON_STD')   == 'true'
 
-        if DEBUG:
+        if LCLDEBUG:
             print("*************************")
             print("CONTEXT_STD       = %s" % self.std_context)
             print(type(self.std_context))
@@ -103,7 +103,7 @@ class MyMonitor(xbmc.Monitor):
             xbmcgui.Window(HOME).clearProperty('SF_STD_DOWNLOAD_ENABLED')
 
 
-        if DEBUG:
+        if LCLDEBUG:
             print("*************************")
             print(f"SF_STD_CONTEXTMENU_ENABLED:{xbmcgui.Window(HOME).getProperty('SF_STD_CONTEXTMENU_ENABLED')}")
             print(f"SF_STD_ADDTOFAVES_ENABLED:{xbmcgui.Window(HOME).getProperty('SF_STD_ADDTOFAVES_ENABLED')}")

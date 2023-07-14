@@ -36,6 +36,7 @@ import xbmc
 import xbmcgui
 import xbmcplugin
 from favourite import removeFave
+from imagecache import checkImageCacheStatus, cacheImage
 
 ADDONID  = utils.ADDONID
 ADDON    = utils.ADDON
@@ -148,7 +149,7 @@ CONTEXTSS             = ADDON.getSetting('CONTEXTSS')             == 'true'
 SHOW_FANART           = ADDON.getSetting('SHOW_FANART')           == 'true'
 SHOWRECOMMEND         = ADDON.getSetting('SHOWRECOMMEND')         == 'true'
 PLAY_PLAYLISTS        = ADDON.getSetting('PLAY_PLAYLISTS')        == 'true'
-METARECOMMEND         = ADDON.getSetting('METARECOMMEND')         == 'true'
+METARECOMMEND         = ADDON.getSetting('METARECOMMEND')         == 'false'
 SYNOPSRECOMMEND       = ADDON.getSetting('SYNOPSRECOMMEND')       == 'true'
 RECOMMENDAUTO         = ADDON.getSetting('RECOMMENDFIRST')        == 'true'
 CONTEXTRECOMMEND      = ADDON.getSetting('CONTEXTRECOMMEND')      == 'true'
@@ -194,6 +195,7 @@ CONTENTTYPES[GETTEXT(35035)] = 'episodes'
 CONTENTTYPES[GETTEXT(35036)] = 'musicvideos'
 CONTENTTYPES[GETTEXT(35037)] = ''
 
+checkImageCacheStatus()
 
 if ADDON.getSetting('SHOW_STARTUP_TXT') == 'true':
     utils.DialogOK(ADDON.getSetting('STARTUP_TXT'))
@@ -941,7 +943,7 @@ def getImage():
     image = xbmcgui.Dialog().browse(2,GETTEXT(30044), 'files', '', False, False, root)
     
     if image and image != root:
-        return image
+        return cacheImage(image)
 
     return None
 
