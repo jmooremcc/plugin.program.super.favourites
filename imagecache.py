@@ -25,7 +25,7 @@ from time import sleep
 from utils import ROOT, Progress, TITLE
 
 IMAGECACHE = os.path.join(ROOT,"ImageCache")
-
+_VERSION = 1.1
 
 def getConfigfiles():
     target = os.path.join(ROOT, rf"Super Favourites{os.sep}*{os.sep}*.cfg")
@@ -87,7 +87,11 @@ def processConfigFiles(d):
     i = 0
     msg = "Converting Config Files"
     dp = Progress(TITLE, msg)
-    nitems = float(len(d))
+    nitems = len(d)
+    if nitems == 0:
+        return
+
+    nitems = float(nitems)
     delta = 1.0 / nitems
     n = 0
 

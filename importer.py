@@ -235,7 +235,9 @@ def extractAll(filename, dp, location):
 
             if filename == 'settings.xml':
                 if utils.DialogYesNo(GETTEXT(30135), line2='', line3=GETTEXT(30136), noLabel=None, yesLabel=None):
-                    zin.extract(item, root)
+                    try:
+                        zin.extract(item, root)
+                    except: pass
             elif filename == 'changelog.txt':
                 try:
                     zin.extract(item, root)      
