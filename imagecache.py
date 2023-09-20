@@ -24,8 +24,12 @@ from shutil import copyfile
 from time import sleep
 from utils import ROOT, Progress, TITLE
 
+_VERSION = 1.2
+
 IMAGECACHE = os.path.join(ROOT,"ImageCache")
-_VERSION = 1.1
+SPECIAL = 'special:'
+
+
 
 def getConfigfiles():
     target = os.path.join(ROOT, rf"Super Favourites{os.sep}*{os.sep}*.cfg")
@@ -72,6 +76,9 @@ def getConfigfiles():
 
 
 def cacheImage(path, copyflag=True):
+    if path.find(SPECIAL) == 0:
+        return path
+
     parent, fname = os.path.split(path)
     newfname = os.path.join(IMAGECACHE, fname)
     if parent != IMAGECACHE:

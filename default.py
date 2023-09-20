@@ -35,6 +35,7 @@ import utils
 import xbmc
 import xbmcgui
 import xbmcplugin
+import xbmcvfs
 from favourite import removeFave
 from imagecache import checkImageCacheStatus, cacheImage
 
