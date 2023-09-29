@@ -1,6 +1,9 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.3.5 September 2023[/COLOR]
+      -Restored util module ROOT variable back to special path
+
 [COLOR chartreuse]2.3.4 September 2023[/COLOR]
       -Modified imagecache to ignore special paths
 

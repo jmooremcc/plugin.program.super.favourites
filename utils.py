@@ -69,7 +69,7 @@ _FOLDER = 400
 
 ROOT =  ADDON.getSetting('FOLDER')
 if not ROOT:
-    ROOT = xbmcvfs.translatePath('special://profile/addon_data/plugin.program.super.favourites/')
+    ROOT = 'special://profile/addon_data/plugin.program.super.favourites/'
 
 
 SHOWXBMC         = ADDON.getSetting('SHOWXBMC')         == 'true'
