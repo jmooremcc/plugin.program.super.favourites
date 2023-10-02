@@ -1,6 +1,9 @@
 [B][COLOR chartreuse]This file contains ALOT of useful information regarding the functionality of Super Favourites[CR]
 PLEASE READ IT!![/COLOR][/B]
 
+[COLOR chartreuse]2.3.7 September 2023[/COLOR]
+      -Fix reported glitch
+
 [COLOR chartreuse]2.3.6 September 2023[/COLOR]
       -Fixed root translation bug in imagecache module
 
