@@ -22,17 +22,19 @@ from glob import glob
 import os, os.path
 from shutil import copyfile
 from time import sleep
+import xbmcvfs
 from utils import ROOT, Progress, TITLE
 
-_VERSION = 1.2
+_VERSION = 1.3
 
-IMAGECACHE = os.path.join(ROOT,"ImageCache")
+ROOTx = xbmcvfs.translatePath(ROOT)
+IMAGECACHE = os.path.join(ROOTx,"ImageCache")
 SPECIAL = 'special:'
 
 
 
 def getConfigfiles():
-    target = os.path.join(ROOT, rf"Super Favourites{os.sep}*{os.sep}*.cfg")
+    target = os.path.join(ROOTx, rf"Super Favourites{os.sep}*{os.sep}*.cfg")
 
     def extract(barray):
         def clean(str):
